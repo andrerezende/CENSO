@@ -201,7 +201,7 @@ session_start("autenticacao");
     } else {
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
         <script>alert(\"Você não tem permissão para visualizar esta página.\");
-                location.href = \"../../index.php\";      
+                location.href = \"../../admin.php\";      
                 </script>";
     }
     
