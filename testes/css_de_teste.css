@@ -1,0 +1,359 @@
+/* CSS Document */
+body {
+	/* background-image: url(fundo1.jpg);
+	background-repeat:repeat-x;
+	background-color:#C9D7DA; */
+	margin-top:0px;
+	margin-left:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#535d3a;
+}
+
+
+form {
+	margin:0;
+	border-width:0;
+}
+
+input {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+}
+
+select {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:9px;
+}
+
+a:link {
+	color:#668303;
+	text-decoration:none;
+}
+a:visited {
+	color:#668303;
+	text-decoration:none;
+}
+
+a:hover {
+	font-weight:bold;
+}
+
+a img {
+	border:0px;
+	padding:1px;
+}
+
+hr {
+	border-color:#ffffff;
+}
+
+ul {
+	list-style: none;
+	list-style-type: none;
+}
+
+.textoDestaque {
+	color: #ff0000;
+	font-size: 12px;
+}
+
+.textoDestaque2 {
+	color: #ff0000;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.textoDestaque3 {
+	color: #000;
+	font-size: 16px;
+}
+
+.textoDestaque4 {
+	color: #ff0000;
+	font-size: 11px;
+}
+
+
+.textoSobrescrito {
+	font-size: 10px;
+	color: #ff0000;
+}
+
+
+/* ---------------------- TUDO - Toda a p�gina ---------------------- */
+#tudo {
+	width: 95%;
+	margin:0 auto;
+	padding: 10px;
+	/* text-align:left; */ /* "rem�dio" para o hack do IE */
+	background-color:#e7efd1;
+}
+
+#conteudoGeral {
+	/*padding: 10px;*/
+	background-color: #FFFFFF;
+}
+
+/* ---------------------- TOPO1 - Barra Governo Federal ---------------------- */
+#topo1 {
+	width:100%;
+	height:25px;
+	background-color:#ffcc00;
+}
+
+.topo1_imagem1 {
+	float:left;
+	margin-top:3px;
+	margin-left:5px;
+}
+
+.topo1_imagem2 {
+	float:right;
+	margin-top:3px;
+	margin-right:5px;
+}
+
+#topo1_destaqueGoveno {
+	float:left;
+	position:absolute;
+	margin-top:4px;
+	margin-left:38%;
+}
+
+/* Select da barra do governo federal */
+#topo1_destaqueGoveno select {
+	font-size:11px;
+	color:#666666;
+	background-color:#ffcc00;
+	border-color:#666666;
+	border-style:solid;
+	border-width:1px;
+}
+
+/* ---------------------- TOPO2 - Banner Topo ---------------------- */
+#topo2 {
+	width:100%;
+	height:177px;
+	margin-top:2px;
+	background:transparent url(imgs/topo2/bg_topo2.png) no-repeat right top;
+
+
+}
+
+/* ---------------------- MEIO GERAL ---------------------- */
+#meioGeral {
+	width:100%-2px;
+	height:auto;
+	overflow:hidden; /* Verificar o porque disso. Dessa forma, n�o deveria mostrar o excedente, mas sem o everflow
+						as divs "coluna" est�o sobrepondo � div conteudo geral */
+
+	border-bottom:solid;
+	border-bottom-color:#aade64;
+	border-bottom-width:2px;
+	border-left:solid;
+	border-left-color:#aade64;
+	border-left-width:2px;
+	border-right:solid;
+	border-right-color:#aade64;
+	border-right-width:2px;
+	padding:5px;
+}
+
+#colunaEsquerda {
+	float:left;
+	width:20%;
+	padding:1%;
+}
+
+.conteudoColunaEsquerda {
+	background-color:#FFFFFF;
+	padding:5px;
+	border-style:solid;
+	border-color:#d7d7d7;
+	border-width:1px;
+}
+
+#colunaMeio {
+	float:left;
+	width:76%;
+	padding:1%;
+}
+
+.conteudoColunaMeio {
+
+	background-color:#fdfdfd;
+	padding:10px;
+	border-style:solid;
+	border-color:#d7d7d7;
+	border-width:1px;
+	overflow: hidden;
+}
+
+#tituloPrincipal {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:#4e9539;
+	margin-bottom:10px;
+}
+
+#inicialCol01 {
+	float: left;
+	width:49%;
+}
+
+#inicialCol02 {
+	float:right;
+	width: 49%;
+}
+
+.formImpressao {
+	color: #000000;
+}
+
+.formImpressao input {
+	border: 0px;
+	color: #000;
+	font-weight: bold;
+	
+}
+
+.inicialTitulo {
+	padding: 1px;
+	padding-left: 5px;
+
+	border-style: solid;
+	border-color: #b2c08f;
+	border-width: 1px;
+
+	height: 15px;
+	vertical-align: middle;
+
+	background-color: #dae4c1;
+	width: 98%;
+
+	font-size: 12px;
+	font-weight: bold;
+
+
+}
+
+/*-------------- INICIO - ESTILO MENU ---------------*/
+
+ul.menu {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	display:block;
+}
+
+#menu2 {
+	width: 99%;
+	border-style: solid solid solid solid;
+	border-color: #d7d7d7;
+	border-width: 1px;
+	padding: 0px;
+	text-align:left;
+}
+
+#menu2 li a {
+	height: 20px;
+  	voice-family: "\"}\"";
+  	voice-family: inherit;
+	text-decoration: none;
+	font-size: 13px;
+	display: block;
+
+}
+
+#menu2 li a:link, #menu2 li a:visited, #menu2 li a:active  {
+	color: #c7f3b8;
+
+	/* background: url(imgs/menu10.gif); */
+	border-bottom-style: solid;
+	border-bottom-color: #c7f3b8;
+	border-bottom-width: 1px;
+	color:#3b8d27;
+	padding-left:8px;
+	padding-top:5px;
+	background-color: #F5F5F5;
+}
+
+#menu2 li a:hover {
+	color: #3b8d27;
+	/* background: url(imgs/menu10.gif) 0 -18px; */
+	padding-left:8px;
+	padding-top:5px;
+	background-color: #fff;
+
+}
+
+/*-------------- FIM - ESTILO MENU ---------------*/
+
+#formularioInscricao {
+	border-bottom:solid;
+	border-bottom-color:#aade64;
+	border-bottom-width:2px;
+	border-left:solid;
+	border-left-color:#aade64;
+	border-left-width:2px;
+	border-right:solid;
+	border-right-color:#aade64;
+	border-right-width:2px;
+}
+
+#formularioInscricao input {
+
+}
+
+/* ---------------------- RODAP� ---------------------- */
+
+#rodape {
+	clear:both;
+	float:left;
+
+	width:100%;
+	height:45px;
+
+	color:#666666;
+	background:#CCCCCC;
+
+	padding-bottom:15px;
+	
+}
+
+#conteudoRodape {
+	padding-left:10px;
+
+}
+.menu_admin {
+	clear: both;
+	text-align: left;
+	line-height: 30px;
+	padding-bottom: 20px;
+}
+.menu_admin li a {
+	font-size: 16px;
+}
+.admin_logout {
+	font-size: 14px;
+	margin: 5px;
+}
+.voltar {
+	text-align: left;
+	margin-left: 35px;
+	padding-bottom: 20px;
+}
+.config-conciliacao {
+	width: 500px;
+	text-align: left;
+	line-height: 20px;
+	font-size: medium;
+}
+.config-conciliacao ul li {
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.config-conciliacao span.descricao {
+	font-weight: normal;
+}
