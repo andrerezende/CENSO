@@ -11,7 +11,7 @@ echo '
         
         <div id="topo-geral">
             <div id="topo">
-                <span class="titulo">SIGA - Sistema Integrado de Gestão Acadêmica</span>                
+                <span class="titulo">CENSO 2011 - IF BAIANO</span>                
             </div>
         </div>
         

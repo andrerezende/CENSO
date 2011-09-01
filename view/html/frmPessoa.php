@@ -33,8 +33,12 @@ if($_SESSION['autenticado']) {
                     
                         <table width="760" border="0" align='center' class="titulo-tabela">				
                             <tr>                                
-                                <td align="center">
+                                <td width="90%" align="center">
                                     <label>Servidor: <?php echo $registroFromBanco['nome']; ?></label>
+                                </td>
+                                <td width="10%" align="center">
+                                    <label for="checkAll1">Todos</label>
+                                    <input type="checkbox" id="checkAll1" name="checkAll1" value="1" onchange="checkAll();" />
                                 </td>
                             </tr>
                         </table>
@@ -124,6 +128,14 @@ if($_SESSION['autenticado']) {
                                 </tr>
                             </table>
                             
+                    
+                    
+                    <?php 
+                    // colocando todos os ids dos elementos checkbox em um array
+                    $elementosCheckbox[] = $registrosAlterados[$i]['id_atualizacao'];                
+                    
+                    ?>
+                    
                     <?php } ?>
                     
                     <table width="760" border="0" align='center' class="titulo-tabela">
@@ -133,6 +145,12 @@ if($_SESSION['autenticado']) {
                                 <input name="confirmar" type="submit" id="confirmar" value="Confirmar" />
                                 <input type="button" value="Voltar" onclick="history.go(-1)" />
                             </td>
+                            
+                            <td width="10%" align="center">
+                                <label for="checkAll2">Todos</label>
+                                <input type="checkbox" id="checkAll2" name="checkAll2" value="1" onchange="checkAll();"/>
+                            </td>
+                            
                         </tr>
 
                     </table>   

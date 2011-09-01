@@ -70,6 +70,42 @@ $(document).ready(function() {  // quando o documento ficar pronto
 
 
 
+function checkAll() {
+    /*
+    var checkboxes = $("input[type=checkbox]");
+    
+    $.each(checkboxes, function(index, value) {
+        alert(value);
+    });
+    */
+   
+    var elementArray = [];
+    
+    if(typeof document.all != "undefined") {
+        elementArray = document.all;
+    } else {
+        elementArray = document.getElementsByTagName("*");
+    }
+    
+    var checkAll1 = document.getElementById("checkAll1");
+    var checkAll2 = document.getElementById("checkAll2");
+    
+    for(var i=0; i<elementArray.length; i++) {
+        if(elementArray[i].tagName == "INPUT") {
+            if(elementArray[i].name != "checkAll1" && elementArray[i].name != "checkAll2") {
+                if(checkAll1.checked || checkAll2.checked) {
+                    elementArray[i].checked = true;
+                } else {
+                    elementArray[i].checked = false;
+                }
+                
+            }
+            
+        }
+    }
+    
+}
+
 function deletar_elemento(id, i) {
     var elemento = document.getElementById(id + i);
     $(elemento).remove();
