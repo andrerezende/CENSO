@@ -35,15 +35,18 @@ if($registroFromBanco && $registroFromPOST) {
             }                        
             
             // POPULA ARRAY DE CAMPOS ALTERADOS
-            if($registroFromPOST[$chave] != $registroFromBanco[$chave]) {   // comparando o valor do post ja devidamente tratado com o valor do banco (ja é  tratado tbm na insercao)
-                $campoAlterado[$i]['campo_alterado'] = $chave;
-                $campoAlterado[$i]['valor_antigo'] = $registroFromBanco[$chave];
-                $campoAlterado[$i]['data_alteracao'] = date('d/m/Y');
-                $campoAlterado[$i]['checado'] = 0;
-                $i++;
-            } 
-            //$registroFromPOST[$chave] = "'".$registroFromPOST[$chave]."'";  // colocando aspa para enviar p/ banco
-        //}
+            
+            if(isset($registroFromBanco[$chave])) { // certificando-se de que esta coluna existe no banco
+                
+                if($registroFromPOST[$chave] != $registroFromBanco[$chave]) {   // comparando o valor do post ja devidamente tratado com o valor do banco (ja é  tratado tbm na insercao)
+                    $campoAlterado[$i]['campo_alterado'] = $chave;
+                    $campoAlterado[$i]['valor_antigo'] = $registroFromBanco[$chave];
+                    $campoAlterado[$i]['data_alteracao'] = date('d/m/Y');
+                    $campoAlterado[$i]['checado'] = 0;
+                    $i++;
+                } 
+                
+            }
     }
     
     
