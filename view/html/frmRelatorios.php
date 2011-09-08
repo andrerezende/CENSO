@@ -37,8 +37,8 @@ if($_SESSION['autenticado']) {  ?>
                                 <td width="100%" align="center">
                                     <a href="../../controller/impressao/imprimir_alteracoes.php" title="Relatório de alterações realizadas">Relatório de Alterações</a><br/>
                                     <a href="../../controller/impressao/imprimir_todos.php" title="Cadastro Funcional de Todos os Servidores">Cadastro Funcional de Todos os Servidores</a><span id="informativo"> *Pode demorar alguns minutos</span><br/> 
-                                    <a href="frmRepPesquisarPessoa" title="Cadastro Funcional Individual">Cadastro Funcional Individual</a><br/>                                    
-                                    <a href="frmAutenticado" title="Voltar">Voltar</a><br/>
+                                    <a href="frmRepPesquisarPessoa.php" title="Cadastro Funcional Individual">Cadastro Funcional Individual</a><br/>                                    
+                                    <a href="frmAutenticado.php" title="Voltar">Voltar</a><br/>
                                 </td>
                             </tr>
 

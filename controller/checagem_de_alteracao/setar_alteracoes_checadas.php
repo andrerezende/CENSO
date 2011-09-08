@@ -15,7 +15,7 @@ if($_SESSION['autenticado']) {
     
     //print_r($_POST);exit;
     
-    array_pop($_POST);  //removendo o botao do array
+    //array_pop($_POST);  //removendo o botao do array
     
     
     if($_POST) {
