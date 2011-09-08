@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+//var_dump($_SESSION);
 require_once '../../controller/Solicitacoes.php';
 
 if($_SESSION['permiteAlterar'] == true) {
@@ -24,7 +24,6 @@ if($_SESSION['permiteAlterar'] == true) {
         
     </head>
     <body>
-        <!-- <div id="tudo"> -->
              
         <?php require_once("statics/cabecalho.php"); ?>
             
@@ -1547,7 +1546,6 @@ if($_SESSION['permiteAlterar'] == true) {
         
         <?php require_once("statics/rodape.php"); ?>
         	
-        <!-- </div> -->
     </body>
     
     
@@ -1558,16 +1556,9 @@ if($_SESSION['permiteAlterar'] == true) {
 
 } else {
     
-    echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Não acesse este arquivo diretamente!\");  
-                   location.href = \"../../index.php\";      
-                    </script>";        
-}  
-
-?>
-
-
-
-
-
-    
+    echo "
+        <script>
+            alert(\"Não acesse este arquivo diretamente!\");  
+            location.href = \"../../index.php\";      
+        </script>";        
+}

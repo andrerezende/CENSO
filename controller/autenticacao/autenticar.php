@@ -20,18 +20,18 @@ if($usuario && $senha) {
         
         header("Location: ../../view/html/frmAutenticado.php"); 
         
-    } else {
-         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-             <script>alert(\"Dados incorretos. Verifique o seu login e senha e tente novamente.\");
-                location.href = \"../../view/html/frmAdmin.php\";      
-                </script>";
-    }
-} else {    // ou ele mandou o user e o pass em branco ou ele tentou acessar esta classe diretamente pelo browser.
-    echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-        <script>alert(\"Dados inválidos.\");
-                location.href = \"../../view/html/frmAdmin.php\";        
-                </script>";
-}
-                    
+    } else {    ?>
+         <script>
+                alert("Dados incorretos. Verifique o seu login e senha e tente novamente.");
+                location.href = '../../view/html/frmAdmin.php';
+        </script>
+                 
+<?php }
 
-?>
+} else {    // ou ele mandou o user e o pass em branco ou ele tentou acessar esta classe diretamente pelo browser. ?>
+    <script>
+        alert("Dados inválidos.");    
+        location.href = "../../view/html/frmAdmin.php";
+    </script>
+
+<?php   }

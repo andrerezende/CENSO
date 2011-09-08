@@ -162,55 +162,58 @@ if($_SESSION['autenticado']) {
                 $qtd_registros_falhados = $status[1];
                 //$erro = $status['erro'];
 
-                if($qtd_registros_adicionados > 0) {            
-                     echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                     <script>alert(\"$qtd_registros_adicionados registros foram importados com sucesso!\");  
-                        </script>";
-                     if($qtd_registros_falhados > 0) {
-                         echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                     <script>alert(\"$qtd_registros_falhados registros possuem caracteres inválidos e não foram adicionados.\");  
-                       history.go(-1);    
-                        </script>";                 
-                     } else {
-                         echo "<script>
-                       history.go(-1);    
-                        </script>";
-                     }
-                } else {
-                     echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                     <script>alert(\"Houve uma falha na importação dos registros.\");  
-                       history.go(-1);    
-                        </script>";
-                }
+                if($qtd_registros_adicionados > 0) { ?>
+                    
+                    <script>
+                        alert("<?php echo $qtd_registros_adicionados ?> registros foram importados com sucesso!");  
+                    </script>
+                    
+                    <?php
+                     
+                     if($qtd_registros_falhados > 0) { ?>
+                         
+                         <script>
+                            alert("$qtd_registros_falhados registros não foram adicionados.");  
+                        </script>  
+                         
+                 <?php }
+                     
+                } else {    ?>
+                        
+                     <script>
+                        alert("Houve uma falha na importação dos registros."); 
+                    </script>
+                    
+            <?php } ?>
+            
+                <!-- em todo caso, volte -->
+                <script>
+                    history.go(-1);    
+                </script>
 
+       <?php } else { ?>
+                
+                <script>
+                    alert("Arquivo inválido.");  
+                    history.go(-1);    
+                </script>
+                
+       <?php }
 
+        } else {  ?>
+            
+            <script>
+                alert("Não acesse este arquivo diretamente!");  
+                location.href = '../../view/html/frmAutenticado.php';
+            </script>
+            
+<?php }
 
-
-
-
-
-                //var_dump($_FILES["arquivo"]["error"]);exit;
-
-
-           } else {
-                echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                     <script>alert(\"Arquivo inválido.\");  
-                       history.go(-1);    
-                        </script>";
-           }
-
-        } else {
-            echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                     <script>alert(\"Não acesse este arquivo diretamente!\");  
-                       location.href = \"../../view/html/frmAutenticado.php\";      
-                        </script>";
-        }
-
-} else {
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-        <script>alert(\"Você não tem permissão para visualizar esta página.\");
-                location.href = \"../../admin.php\";      
-                </script>";
-    }
-
-?>
+} else {    ?>
+        
+    <script>
+        alert("Você não tem permissão para visualizar esta página.");
+        location.href = '../../admin.php';
+    </script>
+        
+<?php }

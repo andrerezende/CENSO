@@ -1,12 +1,8 @@
 <?php
 
-echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-       <script>
-            location.href = \"view/html/frmEntrada.php\";      
-       </script>";   
-?>
+header("Location: view/html/frmEntrada.php"); 
 
-
+/*
 <!-- Usando frame para esconder a url -->
 
 <!--
@@ -25,3 +21,4 @@ echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
 </html>
 
 -->
+*/

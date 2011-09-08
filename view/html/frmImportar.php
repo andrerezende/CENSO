@@ -1,11 +1,12 @@
 <?php
 session_start("autenticacao");
-
-if($_SESSION['autenticado']) {  ?>
-
+?>
 
         <!DOCTYPE html>
             <html>
+
+    <?php if($_SESSION['autenticado']) {  ?>
+
                 <head>
 
                     <title>Censo</title>
@@ -54,19 +55,13 @@ if($_SESSION['autenticado']) {  ?>
                 <!-- </div> -->
                     
             </body>
-        </html>
-    
-    
-    <?php
-} else {
-    echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-        <script>alert(\"Você não tem permissão para visualizar esta página.\");
-                location.href = \"../../admin.php\";      
-                </script>";
-}
+            
+        <?php } else { ?>
+                <script type="text/javascript">
+                    alert("Você não tem permissão para visualizar esta página.");
+                    location.href = "../../admin.php";      
+                </script>
+        <?php } ?>
+        
+</html>
 
-
-
-?>
-
-      

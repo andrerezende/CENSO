@@ -81,43 +81,42 @@ if($_SESSION['autenticado']) {
                 // coloca o array de registros alterado na sessao
                 $_SESSION['registrosAlterados'] = $registrosAlterados;
                 
-                echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /> 
-                        <script>
-                           location.href = '../../view/html/frmPessoa.php';      
-                        </script>";  
+                header("Location: ../../view/html/frmPessoa.php"); 
                 
+            } else {    ?>
                 
-                
-            } else {
-                echo "<script>alert(\"Nenhum registro alterado referente a esta pessoa.\");
+                <script>
+                    alert("Nenhum registro alterado referente a esta pessoa.");
                     history.go(-1);  
-                    </script>";
-            }
+                </script>
+                
+        <?php }
             
-        } else {    // registro nao existe
-            echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Nenhum registro encontrado.\");  
-                   history.go(-1);      
-                    </script>";   
-        }
+        } else {    // registro nao existe  ?>
+            
+            <script>
+                alert("Nenhum registro encontrado.");  
+                history.go(-1);      
+            </script>   
+            
+<?php }
+
         
+    } else { // veio de fora ?>
         
-        
-    } else { // veio de fora
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Não acesse este arquivo diretamente!\");  
-                 location.href = '../../index.php';      
-                    </script>";    
-    }
+            <script>
+                alert("Não acesse este arquivo diretamente!");  
+                location.href = '../../index.php';
+            </script>    
+            
+<?php }
     
-} else {
-    echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-        <script>alert(\"Você não tem permissão para visualizar esta página.\");
-            location.href = \"../../index.php\";      
-            </script>";
-}
+} else {    ?>
+    
+    <script>
+        alert("Você não tem permissão para visualizar esta página.");
+        location.href = '../../index.php';
+    </script>
+    
+<?php }
 
-
-
-
-?>

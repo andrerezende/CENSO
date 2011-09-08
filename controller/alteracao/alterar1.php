@@ -2,17 +2,20 @@
 // CLASSE DE ENCAMINHAMENTO DOS DADOS PARA ALTERACAO
 session_start();
 $_SESSION['permiteAlterar'] = false;
+$_SESSION['registroFromBanco'] = null;
 
 require_once "../../model/Conexao.php";
 require_once '../Seguranca.php';
 
-
-$siape = "'".Seguranca::anti_injection($_POST['index_siape'])."'";  // vem apenas do frmEntrada
-$cpf = "'".Seguranca::anti_injection($_POST['index_cpf'])."'";  // vem apenas do frmEntrada
+// sem aspas porque será tratado como inteiro ao enviar p/ o banco
+$siape = Seguranca::anti_injection($_POST['index_siape']);  // vem apenas do frmEntrada
+$cpf = Seguranca::anti_injection($_POST['index_cpf']);  // vem apenas do frmEntrada
 
     if($siape && $cpf) { 
         
         $registro = Conexao::getInstance()->getPessoaBySiapeCpf($siape, $cpf);
+        
+        //print_r($registro);exit;
         
         // Pegando todos os estados para preencher os selections da view
         $allEstados = Conexao::getInstance()->getAllEstados();
@@ -24,36 +27,29 @@ $cpf = "'".Seguranca::anti_injection($_POST['index_cpf'])."'";  // vem apenas do
                 $_SESSION['permiteAlterar'] = true;
                 $_SESSION['registroFromBanco'] = $registro;  // enviando o obj do registro para alteracao
                 $_SESSION['allEstados'] = $allEstados;
+                header("Location: ../../view/html/frmAlterar.php");
                 
-                echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /> 
-                    <script>
-                           location.href = '../../view/html/frmAlterar.php';      
-                            </script>";  
                 
-            } else {    // NAO PERMITE ATUALIZAR
-                echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /> 
-                        <script>alert(\"Consta nos nossos registros que você já realizou a conferência dos seus dados para o CENSO 2011. Qualquer dúvida entre em contato com a DGP: 71 3186-0047.\");  
-                           history.go(-1);   
-                            </script>";  
-            }             
+            } else { // NAO PERMITE ATUALIZAR ?>  
+                <script>
+                    alert("Consta nos nossos registros que você já realizou a conferência dos seus dados para o CENSO 2011. Qualquer dúvida entre em contato com a DGP: 71 3186-0047.");  
+                    history.go(-1);   
+                </script>";  
+                
+        <?php } ?>          
             
-        } else {    // registro nao existe
-            echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Nenhum registro encontrado.\");  
+     <?php   } else {    // registro nao existe  ?>
+            <script>
+                alert("Nenhum registro encontrado.");  
                    location.href = '../../index.php';      
-                    </script>";   
-        }
+            </script>";   
+   <?php }  ?>
+   
         
+   <?php } else { // veio de fora ?>
+        <script>
+            alert("Não acesse este arquivo diretamente!");  
+             location.href = '../../index.php';      
+        </script>    
         
-        
-    } else { // veio de fora
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Não acesse este arquivo diretamente!\");  
-                 location.href = '../../index.php';      
-                    </script>";    
-    }
-
-
-
-
-?>
+   <?php }

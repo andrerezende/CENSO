@@ -27,4 +27,3 @@ class Solicitacoes {
         return Conexao::getInstance()->getNomeEstadoById($id_estado);
     }
 }
-?>

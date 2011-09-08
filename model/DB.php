@@ -50,9 +50,3 @@ Class DB
         return $this->dbname;
     }
 }
-
-
-
-?>
-
-

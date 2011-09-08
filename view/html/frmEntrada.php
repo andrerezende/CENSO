@@ -10,10 +10,11 @@
                 
     </head>
     <body>
-    <!-- <div id="tudo"> -->
+        
         <?php include_once("statics/cabecalho.php"); ?>
         
-    <div id="conteudo">        
+    <div id="conteudo">    
+        
         <p class="titulo-formulario">CENSO 2011</p>
         <p></p>                           
                                      
@@ -49,19 +50,15 @@
                 <tr>
                     <td width="90%" align="center">
                         <input name="acessar" type="submit" id="acessar" value="Acessar" />
-                        <!-- <input type="button" value="Administrador" onclick="javascript:window.location='frmAdmin.php';" /> -->
                     </td>
                 </tr>
                 
             </table>    
             
 				
-    </form>
-        
-    <!-- </div> -->                              
+    </form>                         
                                             
-             <?php include_once("statics/rodape.php"); ?>
+         <?php include_once("statics/rodape.php"); ?>
 	
-        <!-- </div> -->
     </body>
 </html>

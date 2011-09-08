@@ -166,9 +166,9 @@ Class Conexao
             LEFT JOIN cidade c ON (p.id_cidade = c.id_cidade)";
         
         if($cpf)       // se o cpf tiver sido enviado faça
-            $sql .= " WHERE siape = $siape AND cpf = $cpf;";    // busque por siape e cpf
+            $sql .= " WHERE siape = CAST(abs($siape) AS VARCHAR) AND cpf = CAST(abs($cpf) AS VARCHAR);";    // busque por siape e cpf
         else 
-            $sql .= " WHERE siape = $siape;";    // busque apenas pelo siape
+            $sql .= " WHERE siape = CAST(abs($siape) AS VARCHAR);";    // busque apenas pelo siape
         
         
         $query = pg_query($this->sock, $sql);
@@ -325,7 +325,12 @@ Class Conexao
         $sql_pessoa .= " WHERE id_pessoa = ".$registro['id_pessoa'].";";
         
                
-        $return = pg_query($this->sock, $sql_pessoa); 
+        try {
+            $return = pg_query($this->sock, $sql_pessoa); 
+            
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
         
         for($i=0; $i<count($sql_alteracao); $i++) {
             pg_query($this->sock, $sql_alteracao[$i]);                    
@@ -617,7 +622,11 @@ Class Conexao
         $qtd_registros_adicionados = 0;
         $qtd_registros_nao_adicionados = 0;
         foreach($sql as $sql_unit) {
-            $result = pg_query($this->sock, $sql_unit);
+            try {
+                $result = pg_query($this->sock, $sql_unit);
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
             //var_dump($sql_unit);echo '<BR><BR>';
             
             if($result) { 
@@ -654,60 +663,29 @@ Class Conexao
         $this->conectarDB();
         // O array que chegar, a chave é o id_atualizacao que deve ser setado para 1. o seu valor é 1,
         // utilize o valor vindo do arr
+        $flag = true;
         
-        
-        foreach($arr as $chave=>$valor) {
-            $sql = "UPDATE alteracao SET checado = $valor WHERE id_atualizacao = $chave;";
-            $result = pg_query($this->sock, $sql);
+        try {
+            
+            foreach($arr as $chave=>$valor) {
+                $sql = "UPDATE alteracao SET checado = $valor WHERE id_atualizacao = $chave;";
+                $result = pg_query($this->sock, $sql);
+            }
+            
+        } catch(Exception $e) {
+            $e->getMessage();
+            $flag = false;
         }
         
-        //print_r($sql);
+        $this->close();   
         
-        // usar um try catch aqui depois.. (quando eu aprender isso)
+        return $flag;
         
-        
-        if($result)
-            return true;
-        else
-            return false;
-        
-        $this->close();        
+             
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // **************************************************************
-    
-    public function insert($registros) { 
-        
-        
-        
-        
-    }
-    
-    
-    
-    
-    
-    
     
     
     
 }
            
-
-
-
-
-
-
-?>
-
 

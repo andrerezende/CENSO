@@ -11,41 +11,31 @@ if($_SESSION['registroFromPOST']) {
     $data = date('d/m/Y');
     
     
-    if(Conexao::getInstance()->bloquearPessoa($id_pessoa)) {
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-            <script>alert('Acesso realizado em: $data');  
-                   location.href = '../../index.php';      
-                    </script>";  
-    } else {
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-            <script>alert('Erro ao confirmar acesso.');  
-                   location.href = voltar(1);      
-                    </script>";  
+    if(Conexao::getInstance()->bloquearPessoa($id_pessoa)) { ?>
+        <script>
+            alert('Acesso realizado em: <?php echo $data ?>');
+            location.href = '../../index.php';
+        </script>
+        
+      
+   <?php } else {    ?>
+        
+        <script>
+            alert('Erro ao confirmar acesso.');  
+            location.href = voltar(1);      
+        </script>";  
+        
+        <?php
     }
     
     // AO FINAL DO FLUXO, DESTRUA A SESSAO
     session_destroy();
     
-} else {
-    
-    echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-                 <script>alert(\"Não acesse este arquivo diretamente!\");  
-                   location.href = \"../../index.php\";      
-                    </script>";    
-    
-}
-
-
-
-
-
-
-
-
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+} else { ?>
+        
+        <script>
+            alert("Não acesse este arquivo diretamente!"); 
+            location.href = '../../index.php';
+        </script>
+        
+<?php }

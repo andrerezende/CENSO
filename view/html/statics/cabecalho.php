@@ -1,6 +1,3 @@
-<?php
-
-echo '
 
 <div id="tudo">
 
@@ -16,7 +13,3 @@ echo '
         </div>
         
 <img alt="Logo IFBaiano" src="statics/img/logo_ifbaiano.jpg" width="300" />
-
-';
-
-?>

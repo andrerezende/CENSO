@@ -192,17 +192,21 @@ session_start("autenticacao");
                 $imprimirAlteracoes->gerarPDF();
                 
 
-        } else {
-            echo "<script>alert(\"Nenhum registro foi atualizado na base.\");
-                    history.go(-1);  
-                    </script>";
-        }
+        } else {    ?>
+                        
+            <script>
+                alert("Nenhum registro foi atualizado na base.");
+                history.go(-1);  
+            </script>
+        
+    <?php }
     
-    } else {
-        echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
-        <script>alert(\"Você não tem permissão para visualizar esta página.\");
-                location.href = \"../../admin.php\";      
-                </script>";
-    }
+    } else {    ?>
+        
+        <script>
+            alert("Você não tem permissão para visualizar esta página.");
+            location.href = '../../admin.php';      
+        </script>
     
-?>
+<?php }
+    
