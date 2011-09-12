@@ -43,14 +43,15 @@ if($registroFromBanco && $registroFromPOST) {
                 $registroFromPOST["necessidade_especial"] = $registroFromPOST["necessidade_especial_outra"];
             }
             
-            // POPULA ARRAY DE CAMPOS ALTERADOS
+            // POPULA ARRAY DE CAMPOS ALTERADOS E POE ASPAS
             
             if(array_key_exists($chave, $registroFromBanco)) { // certificando-se de que esta coluna existe no banco
                 
                 if($registroFromPOST[$chave] != $registroFromBanco[$chave]) {   // comparando o valor do post ja devidamente tratado com o valor do banco (ja é  tratado tbm na insercao)
-                    $campoAlterado[$i]['campo_alterado'] = $chave;
-                    $campoAlterado[$i]['valor_antigo'] = $registroFromBanco[$chave];
-                    $campoAlterado[$i]['data_alteracao'] = date('d/m/Y');
+                    //echo $registroFromPOST[$chave]." - ".$registroFromBanco[$chave];
+                    $campoAlterado[$i]['campo_alterado'] = "'$chave'";
+                    $campoAlterado[$i]['valor_antigo'] = ($registroFromBanco[$chave]) ? "'$registroFromBanco[$chave]'" : "null";
+                    $campoAlterado[$i]['data_alteracao'] = "'".date('d/m/Y')."'";
                     $campoAlterado[$i]['checado'] = 0;
                     $i++;
                 } 
@@ -58,17 +59,17 @@ if($registroFromBanco && $registroFromPOST) {
             } 
     }
     
-        
-    
-    
     if($campoAlterado) {
         
         $i = 0;
         // SEGURANÇA ANTI-INJECTION E ADD ASPAS PARA ENVIAR P/ BANCO
         foreach($registroFromPOST as $chave=>$valor) {
-            $registroFromPOST[$chave] = ($valor) ? "'".Seguranca::anti_injection(($valor))."'" : "null";  
+            if($chave != "id_pessoa") {
+                $registroFromPOST[$chave] = ($valor) ? "'".Seguranca::anti_injection(($valor))."'" : "null";  
+            }
         }
         
+        /*
         // ASPAS EM CAMPOALTERADO
         for($i=0; $i<count($campoAlterado); $i++) {
             $campoAlterado[$i]['campo_alterado'] = "'".$campoAlterado[$i]['campo_alterado']."'";
@@ -76,7 +77,8 @@ if($registroFromBanco && $registroFromPOST) {
             $campoAlterado[$i]['data_alteracao'] = "'".date('d/m/Y')."'";
             $campoAlterado[$i]['checado'] = 0;
         }
-        
+         * 
+         */
         
         if(Conexao::getInstance()->update($registroFromPOST, $campoAlterado)) { ?>
             

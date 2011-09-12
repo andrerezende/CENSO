@@ -312,6 +312,8 @@ Class Conexao
     public function update($registro, $campoAlterado) { 
         $this->conectarDB();
         
+        $sql_alteracao = null;
+        
         // atualizando o registro        
         $sql_pessoa = "UPDATE pessoa SET ";        
                 
@@ -325,6 +327,8 @@ Class Conexao
         $sql_pessoa .= " WHERE id_pessoa = ".$registro['id_pessoa'].";";
         
                
+        //print_r($sql_alteracao);exit;
+        
         try {
             $return = pg_query($this->sock, $sql_pessoa); 
             
