@@ -39,14 +39,14 @@ session_start("autenticacao");
                     if($ids_uniques[$i] == $registrosAlterados[$x]['id_pessoa']) {
 
                         $pessoa = Conexao::getInstance()->getPessoaById($ids_uniques[$i]);
-                        $nome_pessoa = $pessoa['nome'];
+                        $nomeSiape_pessoa = "Servidor: ".$pessoa['nome']." - SIAPE:".$pessoa['siape'];
                         //$nome_pessoa = Conexao::getInstance()->getNomePessoaById($ids_uniques[$i]);
 
-                        $arrImprimir[$nome_pessoa][$k]['campo_alterado'] = $registrosAlterados[$x]['campo_alterado'];
-                        $arrImprimir[$nome_pessoa][$k]['valor_antigo'] = $registrosAlterados[$x]['valor_antigo'];
-                        $arrImprimir[$nome_pessoa][$k]['novo_valor'] = $pessoa[$registrosAlterados[$x]['campo_alterado']];
-                        $arrImprimir[$nome_pessoa][$k]['data_alteracao'] = $registrosAlterados[$x]['data_alteracao'];
-                        $arrImprimir[$nome_pessoa][$k]['checado'] = $registrosAlterados[$x]['checado'];
+                        $arrImprimir[$nomeSiape_pessoa][$k]['campo_alterado'] = $registrosAlterados[$x]['campo_alterado'];
+                        $arrImprimir[$nomeSiape_pessoa][$k]['valor_antigo'] = $registrosAlterados[$x]['valor_antigo'];
+                        $arrImprimir[$nomeSiape_pessoa][$k]['novo_valor'] = $pessoa[$registrosAlterados[$x]['campo_alterado']];
+                        $arrImprimir[$nomeSiape_pessoa][$k]['data_alteracao'] = $registrosAlterados[$x]['data_alteracao'];
+                        $arrImprimir[$nomeSiape_pessoa][$k]['checado'] = $registrosAlterados[$x]['checado'];
                         $k++;
                     }
 
@@ -71,7 +71,7 @@ session_start("autenticacao");
 
                             <tr>
                                 <td width="80%" align='left'>
-                                    Servidor: <b><?php echo $nome_alterado; ?></b>
+                                    <b><?php echo $nome_alterado; ?></b>
                                 </td>
                                 <td width="20%">
                                     Total de alteraçoes: <b><?php echo count($arr_alterado); ?></b>
