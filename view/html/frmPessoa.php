@@ -38,7 +38,7 @@ if($_SESSION['autenticado']) {
                                 </td>
                                 <td width="10%" align="center">
                                     <label for="checkAll1">Todos</label>
-                                    <input type="checkbox" id="checkAll1" name="checkAll1" value="1" onchange="checkAll();" />
+                                    <input type="checkbox" id="checkAll1" name="checkAll1" value="1" onchange="checkAll(1);" />
                                 </td>
                             </tr>
                         </table>
@@ -148,7 +148,7 @@ if($_SESSION['autenticado']) {
                             
                             <td width="10%" align="center">
                                 <label for="checkAll2">Todos</label>
-                                <input type="checkbox" id="checkAll2" name="checkAll2" value="1" onchange="checkAll();"/>
+                                <input type="checkbox" id="checkAll2" name="checkAll2" value="1" onchange="checkAll(2);" />
                             </td>
                             
                         </tr>

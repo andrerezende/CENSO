@@ -69,8 +69,8 @@ $(document).ready(function() {  // quando o documento ficar pronto
 })
 
 
-
-function checkAll() {
+function checkAll(n) {
+    
     /*
     var checkboxes = $("input[type=checkbox]");
     
@@ -78,33 +78,57 @@ function checkAll() {
         alert(value);
     });
     */
-   
+
     var elementArray = [];
-    
+
     if(typeof document.all != "undefined") {
         elementArray = document.all;
     } else {
         elementArray = document.getElementsByTagName("*");
     }
-    
+
     var checkAll1 = document.getElementById("checkAll1");
     var checkAll2 = document.getElementById("checkAll2");
     
-    for(var i=0; i<elementArray.length; i++) {
-        if(elementArray[i].tagName == "INPUT") {
-            if(elementArray[i].name != "checkAll1" && elementArray[i].name != "checkAll2") {
-                if(checkAll1.checked || checkAll2.checked) {
-                    elementArray[i].checked = true;
-                } else {
-                    elementArray[i].checked = false;
+
+    if(n == 1) {
+
+        for(var i=0; i<elementArray.length; i++) {
+            if(elementArray[i].tagName == "INPUT") {
+                if(elementArray[i].name != "checkAll1") {
+                    if(checkAll1.checked) {
+                        elementArray[i].checked = true;
+                    } else {
+                        elementArray[i].checked = false;
+                    }
+
                 }
-                
+
             }
-            
         }
+        
+    } else {
+        
+        for(var j=0; j<elementArray.length; j++) {
+            if(elementArray[j].tagName == "INPUT") {
+                if(elementArray[j].name != "checkAll2") {
+                    if(checkAll2.checked) {
+                        elementArray[j].checked = true;
+                    } else {
+                        elementArray[j].checked = false;
+                    }
+
+                }
+
+            }
+        }
+        
     }
     
 }
+
+
+
 
 function deletar_elemento(id, i) {
     var elemento = document.getElementById(id + i);
