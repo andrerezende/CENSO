@@ -39,12 +39,7 @@ Class Conexao
         $this->sock = null;
     }
     
-    public function getPessoaBySiapeCpf($siape, $cpf = null) {
-        $this->conectarDB();
-      
-        /* TABELA PESSOA */
-        
-        
+    private function sqlPessoa() {
         $sql = "
             SELECT 
                     p.id_pessoa as id_pessoa,
@@ -77,6 +72,7 @@ Class Conexao
                     p.email as email,
                     p.pispasep as pispasep,
                     p.certidao_nascimentocasamento as certidao_nascimentocasamento,
+                    p.certidao_nascimentocasamento_id_estado as certidao_nascimentocasamento_id_estado,
                     p.certidao_nascimentocasamento_folha as certidao_nascimentocasamento_folha,
                     p.certidao_nascimentocasamento_livro as certidao_nascimentocasamento_livro,
                     p.rg as rg,
@@ -164,6 +160,16 @@ Class Conexao
             LEFT JOIN estado e1 ON (p.id_estado_nasc = e1.id_estado)
             LEFT JOIN estado e2 ON (p.id_estado_atual = e2.id_estado)
             LEFT JOIN cidade c ON (p.id_cidade = c.id_cidade)";
+        
+        return $sql;
+    }
+    
+    public function getPessoaBySiapeCpf($siape, $cpf = null) {
+        $this->conectarDB();
+      
+        /* TABELA PESSOA */
+        
+        $sql = $this->sqlPessoa();
         
         if($cpf)       // se o cpf tiver sido enviado faça
             $sql .= " WHERE siape = CAST(abs($siape) AS VARCHAR) AND cpf = CAST(abs($cpf) AS VARCHAR);";    // busque por siape e cpf
@@ -427,130 +433,9 @@ Class Conexao
       
         /* TABELA PESSOA */
         
+        $sql = $this->sqlPessoa();
         
-        $sql = "
-            SELECT 
-                    p.id_pessoa as id_pessoa,
-                    p.siape as siape,
-                    p.cpf as cpf,
-                    p.nome as nome,
-                    p.sexo as sexo,
-                    p.datanascimento as datanascimento,
-                    p.naturalidade as naturalidade,
-                    p.nacionalidade as nacionalidade,
-                    p.estadocivil as estadocivil,
-                    p.conjuge as conjuge,
-                    p.nomepai as nomepai,
-                    p.nomemae as nomemae,
-                    p.sangue as sangue,
-                    p.fatorrh as fatorrh,
-                    p.cor as cor,
-                    p.necessidade_especial as necessidade_especial,
-                    p.endresidencial as endresidencial,
-                    p.bairro as bairro,
-                    p.id_estado_nasc as id_estado_nasc,
-                    e1.sgl_estado as sgl_estado_nasc,	
-                    p.id_estado_atual as id_estado_atual,
-                    e2.sgl_estado as sgl_estado_atual,
-                    p.id_cidade as id_cidade,
-                    c.nome_cidade as nome_cidade,
-                    p.cep as cep,
-                    p.telefone as telefone,
-                    p.celular as celular,
-                    p.email as email,
-                    p.pispasep as pispasep,
-                    p.certidao_nascimentocasamento as certidao_nascimentocasamento,
-                    p.certidao_nascimentocasamento_folha as certidao_nascimentocasamento_folha,
-                    p.certidao_nascimentocasamento_livro as certidao_nascimentocasamento_livro,
-                    p.rg as rg,
-                    p.rg_orgaoexpeditor as rg_orgaoexpeditor,
-                    p.rg_id_estado as rg_id_estado,
-                    --e3.rg_sgl_estado as rg_sgl_estado,
-                    p.rg_dataexpedicao as rg_dataexpedicao,
-                    p.registroprofissional as registroprofissional,
-                    p.registroprofissional_orgaoexpeditor as registroprofissional_orgaoexpeditor,
-                    p.registroprofissional_id_estado as registroprofissional_id_estado,
-                    --e4.registroprofissional_sgl_estado as registroprofissional_sgl_estado,
-                    p.registroprofissional_dataexpedicao as registroprofissional_dataexpedicao,
-                    p.tituloeleitor as tituloeleitor,
-                    p.tituloeleitor_zona as tituloeleitor_zona,
-                    p.tituloeleitor_secao as tituloeleitor_secao,
-                    p.tituloeleitor_local as tituloeleitor_local,
-                    p.tituloeleitor_dataexpedicao as tituloeleitor_dataexpedicao,
-                    p.reservista as reservista,
-                    p.reservista_orgaoexpeditor as reservista_orgaoexpeditor,
-                    p.reservista_serie as reservista_serie,
-                    
-                    p.dataprimeiroemprego as dataprimeiroemprego,
-                    p.numerobanco as numerobanco,
-                    p.nomebanco as nomebanco,
-                    p.agencia as agencia,
-                    p.conta as conta,
-                    p.cargofuncao as cargofuncao,
-                    p.codigofuncao as codigofuncao,
-                    p.padrao as padrao,
-                    p.portaria_nomeacao_numero as portaria_nomeacao_numero,
-                    p.portaria_nomeacao_data as portaria_nomeacao_data,
-                    p.data_publicacao as data_publicacao,
-                    p.data_posse as data_posse,
-                    p.data_exercicio as data_exercicio,
-        
-                    p.segundograu as segundograu,
-                    p.segundograu_instituicao as segundograu_instituicao,
-                    p.terceirograu as terceirograu,
-                    p.terceirograu_instituicao as terceirograu_instituicao,
-                    p.posgraduacao1_tipo as posgraduacao1_tipo,
-                    p.posgraduacao1_situacao as posgraduacao1_situacao,
-                    p.posgraduacao1_curso as posgraduacao1_curso,
-                    p.posgraduacao1_instituicao as posgraduacao1_instituicao,
-                    p.posgraduacao1_cargahoraria as posgraduacao1_cargahoraria,
-                    p.posgraduacao1_dataconclusao as posgraduacao1_dataconclusao,
-                    p.posgraduacao2_tipo as posgraduacao2_tipo,
-                    p.posgraduacao2_situacao as posgraduacao2_situacao,
-                    p.posgraduacao2_curso as posgraduacao2_curso,
-                    p.posgraduacao2_instituicao as posgraduacao2_instituicao,
-                    p.posgraduacao2_cargahoraria as posgraduacao2_cargahoraria,
-                    p.posgraduacao2_dataconclusao as posgraduacao2_dataconclusao,
-                    p.posgraduacao3_tipo as posgraduacao3_tipo,
-                    p.posgraduacao3_situacao as posgraduacao3_situacao,
-                    p.posgraduacao3_curso as posgraduacao3_curso,
-                    p.posgraduacao3_instituicao as posgraduacao3_instituicao,
-                    p.posgraduacao3_cargahoraria as posgraduacao3_cargahoraria,
-                    p.posgraduacao3_dataconclusao as posgraduacao3_dataconclusao,
-                    p.posgraduacao4_tipo as posgraduacao4_tipo,
-                    p.posgraduacao4_situacao as posgraduacao4_situacao,
-                    p.posgraduacao4_curso as posgraduacao4_curso,
-                    p.posgraduacao4_instituicao as posgraduacao4_instituicao,
-                    p.posgraduacao4_cargahoraria as posgraduacao4_cargahoraria,
-                    p.posgraduacao4_dataconclusao as posgraduacao4_dataconclusao,
-        
-                    p.idioma1 as idioma1,
-                    p.idioma1_leitura as idioma1_leitura,
-                    p.idioma1_fala as idioma1_fala,
-                    p.idioma1_escrita as idioma1_escrita,
-                    p.idioma2 as idioma2,
-                    p.idioma2_leitura as idioma2_leitura,
-                    p.idioma2_fala as idioma2_fala,
-                    p.idioma2_escrita as idioma2_escrita,
-                    p.idioma3 as idioma3,
-                    p.idioma3_leitura as idioma3_leitura,
-                    p.idioma3_fala as idioma3_fala,
-                    p.idioma3_escrita as idioma3_escrita,
-                    p.idioma4 as idioma4,
-                    p.idioma4_leitura as idioma4_leitura,
-                    p.idioma4_fala as idioma4_fala,
-                    p.idioma4_escrita as idioma4_escrita,
-        
-                    p.podeatualizar as podeatualizar
-
-            FROM pessoa p
-            LEFT JOIN estado e1 ON (p.id_estado_nasc = e1.id_estado)
-            LEFT JOIN estado e2 ON (p.id_estado_atual = e2.id_estado)
-            LEFT JOIN cidade c ON (p.id_cidade = c.id_cidade)
-            
-            WHERE id_pessoa = $id_pessoa
-            ;
-        ";
+        $sql .= " WHERE id_pessoa = $id_pessoa;";
         
         $query = pg_query($this->sock, $sql);
         $registro = pg_fetch_assoc($query);

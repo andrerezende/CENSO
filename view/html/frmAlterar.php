@@ -99,7 +99,7 @@ if($_SESSION['permiteAlterar'] == true) {
                             <label for=naturalidade>Naturalidade:</label>
                         </td>
                         <td colspan='2'>
-                            <input style="text-transform:uppercase" name="naturalidade" id="naturalidade" type="text" value="<?php echo $registro['naturalidade']; ?>" size='30' maxlength="50" alt="Naturalidade" />
+                            <input style="text-transform:uppercase" name="naturalidade" id="naturalidade" type="text" value="<?php echo $registro['naturalidade']; ?>" size='30' maxlength="60" alt="Naturalidade" />
                         </td>
                     </tr>
                     
@@ -129,7 +129,7 @@ if($_SESSION['permiteAlterar'] == true) {
                             <label>Nacionalidade:</label>
                         </td>
                         <td colspan='2'>
-                            <input style="text-transform:uppercase" name="nacionalidade" id="nacionalidade" type="text" value="<?php echo $registro['nacionalidade']; ?>" size='30' maxlength="50" alt="Nacionalidade" />
+                            <input style="text-transform:uppercase" name="nacionalidade" id="nacionalidade" type="text" value="<?php echo $registro['nacionalidade']; ?>" size='30' maxlength="60" alt="Nacionalidade" />
                         </td>
                     </tr>
                     
@@ -200,7 +200,7 @@ if($_SESSION['permiteAlterar'] == true) {
                         <td colspan='2'>
                             <input style="text-transform:uppercase" name="bairro" id="bairro" value="<?php echo $registro['bairro']; ?>" type="text" size='50' maxlength="50" alt="Bairro"/>
                             &nbsp;&nbsp;<label for=cep>CEP:</label>&nbsp;&nbsp;
-                            <input name="cep" type="text" id="cep" value="<?php echo $registro['cep']; ?>" onkeypress="Mascara('CEP',this,event); return Onlynumber(event);" size="12" maxlength="09" alt="CEP" />
+                            <input name="cep" type="text" id="cep" value="<?php echo $registro['cep']; ?>" onkeypress="Mascara('CEP',this,event); return Onlynumber(event);" size="12" maxlength="8" alt="CEP" />
                         </td>
                     </tr>                    
                     
@@ -422,10 +422,30 @@ if($_SESSION['permiteAlterar'] == true) {
 
                   <tr>
                         <td width="150" height="27" align='right'>
-                            <label>Certidão de Nascimento:</label>
+                            <label>Certidão de Nascimeto (Num. Registro):</label>
                         </td>
                         <td>
-                            <input style="text-transform:uppercase" name="certidao_nascimentocasamento" id="certidao_nascimentocasamento" value="<?php echo $registro['certidao_nascimentocasamento']; ?>" type="text" size='40' maxlength="50" alt="Certidão de Nascimento" />
+                            <input style="text-transform:uppercase" name="certidao_nascimentocasamento" id="certidao_nascimentocasamento" value="<?php echo $registro['certidao_nascimentocasamento']; ?>" type="text" size='40' maxlength="50" alt="Certidão de Nascimento" onkeypress="javascript:return Onlynumber(event);" />                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td width="150" height="27" align='right'>
+                            <label>UF do cartório:</label>
+                        </td>
+                        <td>
+                            <select name="certidao_nascimentocasamento_id_estado" id="certidao_nascimentocasamento_id_estado" >
+                                <?php
+                                    echo('	<option value=""></option>\n'); // padrao em branco
+                                    foreach($allEstados as $estado) {
+                                        if ($estado['id_estado'] == $registro['certidao_nascimentocasamento_id_estado']) {
+                                            echo("	<option selected value='".$estado['id_estado']."'>".$estado['sgl_estado']."</option>\n");
+                                        } else {
+                                            echo("	<option value='".$estado['id_estado']."'>".$estado['sgl_estado']."</option>\n");
+                                        }
+                                    }
+                                ?>
+                            </select>
                         </td>
                     </tr>
                     
@@ -446,7 +466,7 @@ if($_SESSION['permiteAlterar'] == true) {
                             <input style="text-transform:uppercase" name="certidao_nascimentocasamento_livro" id="certidao_nascimentocasamento_livro" value="<?php echo $registro['certidao_nascimentocasamento_livro']; ?>" type="text" size='10' maxlength="10" alt="Livro" />
                         </td>
                     </tr>
-                    
+                                        
                     <tr>
                         <td width="150" height="27" align='right'></td>
                     </tr>
@@ -462,10 +482,10 @@ if($_SESSION['permiteAlterar'] == true) {
                     
                     <tr>
                         <td width="150" height="27" align='right'>
-                            <label>Orgão Expeditor:</label>
+                            <label>Orgão Expedidor:</label>
                         </td>
                         <td>
-                            <input style="text-transform:uppercase" name="rg_orgaoexpeditor" id="rg_orgaoexpeditor" value="<?php echo $registro['rg_orgaoexpeditor']; ?>" type="text" size="3" maxlength="3" alt="Órgão Expeditor" />
+                            <input style="text-transform:uppercase" name="rg_orgaoexpeditor" id="rg_orgaoexpeditor" value="<?php echo $registro['rg_orgaoexpeditor']; ?>" type="text" size="3" maxlength="5" alt="Órgão Expedidor" />
                         </td>
                     </tr>
                     
@@ -513,10 +533,10 @@ if($_SESSION['permiteAlterar'] == true) {
                     
                     <tr>
                         <td width="150" height="27" align='right'>
-                            <label>Orgão Expeditor:</label>
+                            <label>Orgão Expedidor:</label>
                         </td>
                         <td>
-                            <input style="text-transform:uppercase" name="registroprofissional_orgaoexpeditor" id="registroprofissional_orgaoexpeditor" value="<?php echo $registro['registroprofissional_orgaoexpeditor']; ?>"  type="text" size="3" maxlength="3" alt="Órgão Expeditor" />
+                            <input style="text-transform:uppercase" name="registroprofissional_orgaoexpeditor" id="registroprofissional_orgaoexpeditor" value="<?php echo $registro['registroprofissional_orgaoexpeditor']; ?>"  type="text" size="3" maxlength="5" alt="Órgão Expedidor" />
                         </td>
                     </tr>
                     
@@ -559,7 +579,7 @@ if($_SESSION['permiteAlterar'] == true) {
                                  <label>Título de eleitor:</label>
                              </td>
                             <td>
-                                <input name="tituloeleitor" id="tituloeleitor" value="<?php echo $registro['tituloeleitor']; ?>" type="text" size="13" maxlength="10" alt="Título de eleitor:" />
+                                <input name="tituloeleitor" id="tituloeleitor" value="<?php echo $registro['tituloeleitor']; ?>" type="text" size="13" maxlength="12" alt="Título de eleitor:" />
                             </td>
                         </tr>
                         
@@ -614,10 +634,10 @@ if($_SESSION['permiteAlterar'] == true) {
                         
                         <tr>
                             <td width="150" height="27" align='right'>
-                                <label>Orgão Expeditor:</label>
+                                <label>Orgão Expedidor:</label>
                             </td>
                             <td>
-                                <input style="text-transform:uppercase" name="reservista_orgaoexpeditor" id="reservista_orgaoexpeditor" value="<?php echo $registro['reservista_orgaoexpeditor']; ?>" type="text" size="8" maxlength="5" alt="Órgão Expeditor" />
+                                <input style="text-transform:uppercase" name="reservista_orgaoexpeditor" id="reservista_orgaoexpeditor" value="<?php echo $registro['reservista_orgaoexpeditor']; ?>" type="text" size="8" maxlength="20" alt="Órgão Expedidor" />
                             </td>
                         </tr>
 
@@ -657,7 +677,7 @@ if($_SESSION['permiteAlterar'] == true) {
                                 <label for=numeroBanco>Nome do Banco:</label>
                             </td>
                             <td>
-                                <input name="nomebanco" type="text" id="nomebanco" value="<?php echo $registro['nomebanco']; ?>" size="40" maxlength="50" alt="Nome do banco" />
+                                <input name="nomebanco" type="text" id="nomebanco" value="<?php echo $registro['nomebanco']; ?>" size="40" maxlength="60" alt="Nome do banco" />
                             </td>
                         </tr>
                             
@@ -708,7 +728,7 @@ if($_SESSION['permiteAlterar'] == true) {
                         <label for=codigoFuncao>Código:</label>
                     </td>
                     <td>
-                        <input name="codigofuncao" type="text" id="codigofuncao" value="<?php echo $registro['codigofuncao']; ?>" size="20"  alt="Código" />
+                        <input name="codigofuncao" type="text" id="codigofuncao" value="<?php echo $registro['codigofuncao']; ?>" size="20" maxlegth="20" alt="Código da função" />
                     </td>
                 </tr>
                                 
@@ -717,7 +737,7 @@ if($_SESSION['permiteAlterar'] == true) {
                         <label for=padrao>Padrão:</label>
                     </td>
                     <td>
-                        <input name="padrao" type="text" id="padrao" value="<?php echo $registro['padrao']; ?>" size="20" maxlength="30" alt="Padrão" />
+                        <input name="padrao" type="text" id="padrao" value="<?php echo $registro['padrao']; ?>" size="20" maxlength="20" alt="Padrão" />
                     </td>
                 </tr>
                 
@@ -726,7 +746,7 @@ if($_SESSION['permiteAlterar'] == true) {
                         <label>Portaria Nomeação (número):</label>
                     </td>
                     <td>
-                        <input name="portaria_nomeacao_numero" type="text" id="portaria_nomeacao_numero" value="<?php echo $registro['portaria_nomeacao_numero']; ?>" size="20" maxlength="30" alt="Portaria Nomeação (número)" onkeypress="return Onlynumber(event);"/>
+                        <input name="portaria_nomeacao_numero" type="text" id="portaria_nomeacao_numero" value="<?php echo $registro['portaria_nomeacao_numero']; ?>" size="20" maxlength="20" alt="Portaria Nomeação (número)" onkeypress="return Onlynumber(event);"/>
                     </td>
                 </tr>
                                 

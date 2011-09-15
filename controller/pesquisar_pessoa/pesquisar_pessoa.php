@@ -35,7 +35,11 @@ if($_SESSION['autenticado']) {
                     
                     
                     // id_estadoS
-                    if($registrosAlterados[$i]['campo_alterado'] == "id_estado_nasc" || $registrosAlterados[$i]['campo_alterado'] == "id_estado_atual" || $registrosAlterados[$i]['campo_alterado'] == "rg_id_estado" || $registrosAlterados[$i]['campo_alterado'] == "registroprofissional_id_estado") {
+                    if($registrosAlterados[$i]['campo_alterado'] == "id_estado_nasc" || 
+                            $registrosAlterados[$i]['campo_alterado'] == "id_estado_atual" || 
+                            $registrosAlterados[$i]['campo_alterado'] == "rg_id_estado" || 
+                            $registrosAlterados[$i]['campo_alterado'] == "registroprofissional_id_estado" ||
+                            $registrosAlterados[$i]['campo_alterado'] == "certidao_nascimentocasamento_id_estado") {
                         
                         // percorrendo o array de estados
                         foreach($allEstados as $estado) {

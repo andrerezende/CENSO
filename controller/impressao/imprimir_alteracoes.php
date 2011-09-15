@@ -1,6 +1,9 @@
 <?php
 session_start("autenticacao");
 
+ini_set('memory_limit','1024M');     // memory limit 1GB
+ini_set('max_execution_time','2400');    // tempo maximo de espera 40 minutos
+
     //ini_set('display_errors', 1);
     
     if($_SESSION['autenticado']) {
@@ -39,6 +42,7 @@ session_start("autenticacao");
                     if($ids_uniques[$i] == $registrosAlterados[$x]['id_pessoa']) {
 
                         $pessoa = Conexao::getInstance()->getPessoaById($ids_uniques[$i]);
+                        
                         $nomeSiape_pessoa = "Servidor: ".$pessoa['nome']." - SIAPE:".$pessoa['siape'];
                         //$nome_pessoa = Conexao::getInstance()->getNomePessoaById($ids_uniques[$i]);
 
@@ -116,7 +120,11 @@ session_start("autenticacao");
                                 <td width="35%" align='left'>
                                     <div id="label_original_impressao">
                                         <?php // buscando o nome do estado
-                                        if($arr_alterado[$i]['campo_alterado'] == "id_estado_nasc" || $arr_alterado[$i]['campo_alterado'] == "id_estado_atual" || $arr_alterado[$i]['campo_alterado'] == "rg_id_estado" || $arr_alterado[$i]['campo_alterado'] == "registroprofissional_id_estado") {
+                                        if($arr_alterado[$i]['campo_alterado'] == "id_estado_nasc" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "id_estado_atual" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "rg_id_estado" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "registroprofissional_id_estado" ||
+                                                $arr_alterado[$i]['campo_alterado'] == "certidao_nascimentocasamento_id_estado") {
                                             $estado = Solicitacoes::getEstadoByID($arr_alterado[$i]['valor_antigo']);
                                             if($estado) {
                                                 echo $estado['sgl_estado'];
@@ -141,7 +149,11 @@ session_start("autenticacao");
                                 <td width="35%" align='left'>
                                     <div id="label_alterado_impressao">
                                         <?php // buscando o nome do estado
-                                        if($arr_alterado[$i]['campo_alterado'] == "id_estado_nasc" || $arr_alterado[$i]['campo_alterado'] == "id_estado_atual"  || $arr_alterado[$i]['campo_alterado'] == "rg_id_estado" || $arr_alterado[$i]['campo_alterado'] == "registroprofissional_id_estado") {
+                                        if($arr_alterado[$i]['campo_alterado'] == "id_estado_nasc" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "id_estado_atual"  || 
+                                                $arr_alterado[$i]['campo_alterado'] == "rg_id_estado" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "registroprofissional_id_estado" || 
+                                                $arr_alterado[$i]['campo_alterado'] == "certidao_nascimentocasamento_id_estado") {
                                             $estado = Solicitacoes::getEstadoByID($arr_alterado[$i]['novo_valor']); 
                                             if($estado) {
                                                 echo $estado['sgl_estado'];

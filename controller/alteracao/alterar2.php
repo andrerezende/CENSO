@@ -9,6 +9,7 @@ $campoAlterado = null;
 require_once '../../model/Conexao.php';
 require_once '../../controller/Seguranca.php';
 
+//print_r($_POST);exit;
 
 //ini_set('display_errors', 1);
 
@@ -19,7 +20,8 @@ require_once '../../controller/Seguranca.php';
 // é necessario pegar o registro antigo para verificar quais campos foram alterados
 $registroFromBanco = $_SESSION['registroFromBanco'];
 
-array_pop($_POST);   // removendo a declaracao
+unset($POST['declaracao']);
+//array_pop($_POST);   // removendo a declaracao
 $registroFromPOST = $_POST;
 
 //print_r($registroFromPOST);exit;

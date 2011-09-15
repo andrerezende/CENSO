@@ -96,6 +96,10 @@ class Util_controller {
                 return "Certidão de Nascimento / Casamento";
                 break;
             
+            case "certidao_nascimentocasamento_id_estado":
+                return "Estado (Certidão de Nascimento / Casamento)";
+                break;
+            
             case "certidao_nascimentocasamento_folha":
                 return "Folha (Certidão de Nascimento / Casamento)";
                 break;
@@ -109,7 +113,7 @@ class Util_controller {
                 break;
             
             case "rg_orgaoexpeditor":
-                return "Orgão Expeditor (RG)";
+                return "Orgão Expedidor (RG)";
                 break;
                         
             case "rg_dataexpedicao":
@@ -121,7 +125,7 @@ class Util_controller {
                 break;
             
             case "registroprofissional_orgaoexpeditor":
-                return "Orgão Expeditor (Registro Profissional)";
+                return "Orgão Expedidor (Registro Profissional)";
                 break;
                       
             case "registroprofissional_dataexpedicao":
@@ -153,7 +157,7 @@ class Util_controller {
                 break;
             
             case "reservista_orgaoexpeditor":
-                return "Orgão Expeditor (Reservista)";
+                return "Orgão Expedidor (Reservista)";
                 break;
             
             case "reservista_serie":
