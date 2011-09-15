@@ -278,8 +278,16 @@ if($_SESSION['autenticado']) {
 
                     <td width="30%" height="27" align='center'>
                         <label><b>Certidão de Nascimento:</b></label>
+                        <?php 
+                        foreach($allEstados as $estado) {
+                            if($registroFromBanco['certidao_nascimentocasamento_id_estado'] == $estado['id_estado']) {
+                                $registroFromBanco['certidao_nascimentocasamento_id_estado'] = $estado['sgl_estado'];  
+                                break;
+                            }
+                        }
+                        ?>
                         <label>
-                            <?php echo $registroFromBanco['certidao_nascimentocasamento']; ?>
+                            <?php echo $registroFromBanco['certidao_nascimentocasamento_id_estado'].$registroFromBanco['certidao_nascimentocasamento']; ?>
                         </label>                            
                     </td>
 
