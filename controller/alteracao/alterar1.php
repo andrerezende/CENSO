@@ -22,7 +22,10 @@ $cpf = Seguranca::anti_injection($_POST['index_cpf']);  // vem apenas do frmEntr
         //var_dump($siape, $cpf);exit;
         if($registro) { // registro existe 
             
-            
+            $email_dominio = explode("@", $registro['email']);
+            $registro['email'] = $email_dominio[0];
+            $registro['email_dominio'] = strtolower("@$email_dominio[1]");
+                        
             if(Conexao::getInstance()->isAtualizacaoPossivel($registro['id_pessoa'])) {   // permitido atualizar
                 $_SESSION['permiteAlterar'] = true;
                 $_SESSION['registroFromBanco'] = $registro;  // enviando o obj do registro para alteracao

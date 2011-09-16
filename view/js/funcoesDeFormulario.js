@@ -149,6 +149,21 @@ function Onlynumber(e) {
 			return false;
 		}
 	}
+        
+    function NotSpecialCaracteres(e) {
+            var tecla=new Number();
+
+            if (window.event) {
+                    tecla = e.keyCode;
+            } else if (e.which) {
+                    tecla = e.which;
+            } else {
+                    return true;
+            }
+            if (tecla >= 32 && tecla <= 45 || (tecla >= 58 && tecla <= 64) || (tecla >= 91 && tecla <= 94) || (tecla == 96) || (tecla >= 126 && tecla <= 123)) {
+                    return false;
+            }
+    }
 
 	
         function validar_declaracao() {

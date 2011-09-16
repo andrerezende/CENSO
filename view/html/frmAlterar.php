@@ -140,7 +140,7 @@ if($_SESSION['permiteAlterar'] == true) {
                     <td>
                         <select name="estadocivil" id="estadocivil" >
                             <?php
-                                $estadocivil = array("SOLTEIRO","CASADO","VIÚVO","SEPARADO","DIVORCIADO");
+                                $estadocivil = array("SOLTEIRO","CASADO","VIÚVO","SEPARADO","DIVORCIADO", "UNIÃO ESTÁVEL");
 
                                 $total = count($estadocivil);
                                 $i = 0;
@@ -256,7 +256,33 @@ if($_SESSION['permiteAlterar'] == true) {
                             <label for=email>E-mail:</label>
                         </td>
                         <td>
-                            <input style="text-transform:uppercase" name="email" id="email" value="<?php echo $registro['email']; ?>" type="text" size="40" maxlength="60" alt="E-mail" />
+                            <input style="text-transform:lowercase" name="email" id="email" value="<?php echo $registro['email']; ?>" type="text" size="20" maxlength="50" alt="E-mail" onkeypress="return NotSpecialCaracteres(event);"/>
+                            <select name="email_dominio" id="email_dominio">
+                            <?php
+                                $email_dominio = array(
+                                    "@ifbaiano.edu.br",
+                                    "@bonfim.ifbaiano.edu.br",
+                                    "@catu.ifbaiano.edu.br",
+                                    "@guanambi.ifbaiano.edu.br",
+                                    "@itapetinga.ifbaiano.edu.br",
+                                    "@lapa.ifbaiano.edu.br",
+                                    "@mangabeira.ifbaiano.edu.br",
+                                    "@si.ifbaiano.edu.br",
+                                    "@teixeira.ifbaiano.edu.br",
+                                    "@urucuca.ifbaiano.edu.br",
+                                    "@valenca.ifbaiano.edu.br"
+                                    );
+
+                                $total = count($email_dominio);
+                                for($i=0; $i<$total; $i++) {
+                                    if ($email_dominio[$i] != $registro['email_dominio']) {
+                                        echo("	<option value='$email_dominio[$i]'>$email_dominio[$i]</option>\n");
+                                    } else {
+                                        echo("	<option selected value='$email_dominio[$i]'>$email_dominio[$i]</option>\n");
+                                    }
+                                }
+                            ?>
+                        </select>
                         </td>
                     </tr>
                 
