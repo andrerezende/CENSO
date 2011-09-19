@@ -383,6 +383,22 @@ Class Conexao
         return $arr;
     }
     
+    function getAllRegistrosPendentes() {
+        $this->conectarDB();
+        
+        // 1 significa que ainda nao foi confirmado acesso.
+        $sql = "SELECT * FROM pessoa WHERE podeatualizar = 1 ORDER BY nome;";
+        $result = pg_query($this->sock, $sql);
+        
+        while($reg = pg_fetch_assoc($result)) {
+            $arr[] = $reg;
+        }
+        
+        $this->close();
+        
+        return $arr;
+    }
+    
     
     function getAllregistrosAlterados() {
         $this->conectarDB();
