@@ -26,4 +26,8 @@ class Solicitacoes {
     public static function getNomeEstadoByID($id_estado) {
         return Conexao::getInstance()->getNomeEstadoById($id_estado);
     }
+    
+    public static function getAllEstados() {
+        return Conexao::getInstance()->getAllEstados();
+    }
 }

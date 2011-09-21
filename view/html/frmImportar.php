@@ -36,7 +36,9 @@ session_start("autenticacao");
                     <table width="460" border="0" align='center' class="conteudo-tabela">
                         <tr>
                             <td width="100%" align="center">
-                                Arquivo xls:  <input name="arquivo" type="file"/>
+                                Arquivo xls parte 1:  <input name="arquivo1" type="file"/><br/>
+                                Arquivo xls parte 2:  <input name="arquivo2" type="file"/><br/>
+                                Arquivo xls parte 3:  <input name="arquivo3" type="file"/>
                             </td>
                         </tr>
                         <tr>
