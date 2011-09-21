@@ -811,6 +811,39 @@ if($_SESSION['permiteAlterar'] == true) {
                             <input name="data_exercicio" id="data_exercicio" value="<?php echo $registro['data_exercicio']; ?>" type="text" size="15" maxlength="10" alt="Data de exercício" onkeypress="Mascara('DATA',this,event); return Onlynumber(event);" />
                         </td>
                     </tr>
+                    
+                    <tr>
+                        <td width="150" height="27" align='right'>
+                            <label>Lotação:</label>
+                        </td>
+                        <td>
+                            <select name="lotacao" id="lotacao">
+                            <?php
+                                $lotacao = array(
+                                    "IFBAIANO - REITORIA",
+                                    "IFBAIANO - GUANAMBI",
+                                    "IFBAIANO - SANTA INÊS",
+                                    "IFBAIANO - SENHOR DO BONFIM",
+                                    "IFBAIANO - CATU",
+                                    "IFBAIANO - BOM JESUS DA LAPA",
+                                    "IFBAIANO - ITAPETINGA",
+                                    "IFBAIANO - TEIXEIRA DE FREITAS",
+                                    "IFBAIANO - URUÇUCA",
+                                    "IFBAIANO - VALENÇA"
+                                    );
+
+                                $total = count($lotacao);
+                                for($i=0; $i<$total; $i++) {
+                                    if ($lotacao[$i] != $registro['lotacao']) {
+                                        echo("	<option value='$lotacao[$i]'>$lotacao[$i]</option>\n");
+                                    } else {
+                                        echo("	<option selected value='$lotacao[$i]'>$lotacao[$i]</option>\n");
+                                    }
+                                }
+                            ?>
+                        </select>
+                        </td>
+                    </tr>
 
                     <tr>
                         <td width="150" height="27" align='right'></td>

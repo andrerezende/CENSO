@@ -216,6 +216,10 @@ class Util_controller {
                 return "Data de Exercício";
                 break;
             
+            case "lotacao":
+                return "Lotação";
+                break;
+            
             case "segundograu":
                 return "Segundo Grau";
                 break;

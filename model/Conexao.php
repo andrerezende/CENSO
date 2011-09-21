@@ -107,6 +107,7 @@ Class Conexao
                     p.data_publicacao as data_publicacao,
                     p.data_posse as data_posse,
                     p.data_exercicio as data_exercicio,
+                    p.lotacao as lotacao,
         
                     p.segundograu as segundograu,
                     p.segundograu_instituicao as segundograu_instituicao,
