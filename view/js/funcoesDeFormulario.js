@@ -439,6 +439,51 @@ function Onlynumber(e) {
                         
                     }
                     break;
+                    
+                case "check_especializacao":
+                    if(!elementoEscolhido.checked) {                        
+                        document.getElementById("desejo_especializacao_area").value = "";
+                        document.getElementById("desejo_especializacao_area").readOnly = true;   
+                        document.getElementById("label_especializacao").style.display = "none";  
+                        document.getElementById("desejo_especializacao_area").style.display = "none";  
+                        
+                    } else {
+                        document.getElementById("desejo_especializacao_area").readOnly = false;
+                        document.getElementById("label_especializacao").style.display = "inline";  
+                        document.getElementById("desejo_especializacao_area").style.display = "inline";  
+                        document.getElementById("desejo_especializacao_area").focus();
+                    }
+                    break;
+                    
+                case "check_mestrado":
+                    if(!elementoEscolhido.checked) {                        
+                        document.getElementById("desejo_mestrado_area").value = "";
+                        document.getElementById("desejo_mestrado_area").readOnly = true;   
+                        document.getElementById("label_mestrado").style.display = "none";  
+                        document.getElementById("desejo_mestrado_area").style.display = "none";  
+                        
+                    } else {
+                        document.getElementById("desejo_mestrado_area").readOnly = false;
+                        document.getElementById("label_mestrado").style.display = "inline";  
+                        document.getElementById("desejo_mestrado_area").style.display = "inline"; 
+                        document.getElementById("desejo_mestrado_area").focus();
+                    }
+                    break;
+                    
+                case "check_doutorado":
+                    if(!elementoEscolhido.checked) {                        
+                        document.getElementById("desejo_doutorado_area").value = "";
+                        document.getElementById("desejo_doutorado_area").readOnly = true;   
+                        document.getElementById("label_doutorado").style.display = "none";  
+                        document.getElementById("desejo_doutorado_area").style.display = "none";  
+                        
+                    } else {
+                        document.getElementById("desejo_doutorado_area").readOnly = false;
+                        document.getElementById("label_doutorado").style.display = "inline";  
+                        document.getElementById("desejo_doutorado_area").style.display = "inline";  
+                        document.getElementById("desejo_doutorado_area").focus();
+                    }
+                    break;
             }
             
         }

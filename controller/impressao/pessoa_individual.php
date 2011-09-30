@@ -724,6 +724,27 @@
             </tr>
 
         </table>
+         
+         <table width="760" border="0" align='center' class="conteudo-tabela">
+
+            <tr>
+                <td width="35%" height="27" align='left'>
+                    <label><b>Desejo fazer Especialização em:</b></label>
+                    <label><?php echo $registroFromBanco['desejo_especializacao_area']; ?></label>
+                </td>
+
+                <td width="35%" height="27" align='center'>
+                    <label><b>Desejo fazer Mestrado em:</b></label>
+                    <label><?php echo $registroFromBanco['desejo_mestrado_area']; ?></label>
+                </td>
+
+                <td width="30%" height="27" align='center'>
+                    <label><b>Desejo fazer Doutorado em:</b></label>
+                    <label><?php echo $registroFromBanco['desejo_doutorado_area']; ?></label>
+                </td>
+            </tr>
+
+        </table>
 
 
     <table width="760" border="0" align='center' class="titulo-tabela">				

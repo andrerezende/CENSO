@@ -112,8 +112,12 @@ Class Conexao
         
                     p.segundograu as segundograu,
                     p.segundograu_instituicao as segundograu_instituicao,
+                    p.segundograu_curso as segundograu_curso,
+                    p.segundograu_dataconclusao as segundograu_dataconclusao,
                     p.terceirograu as terceirograu,
                     p.terceirograu_instituicao as terceirograu_instituicao,
+                    p.terceirograu_curso as terceirograu_curso,
+                    p.terceirograu_dataconclusao as terceirograu_dataconclusao,
                     p.posgraduacao1_tipo as posgraduacao1_tipo,
                     p.posgraduacao1_situacao as posgraduacao1_situacao,
                     p.posgraduacao1_curso as posgraduacao1_curso,
@@ -138,6 +142,10 @@ Class Conexao
                     p.posgraduacao4_instituicao as posgraduacao4_instituicao,
                     p.posgraduacao4_cargahoraria as posgraduacao4_cargahoraria,
                     p.posgraduacao4_dataconclusao as posgraduacao4_dataconclusao,
+                    
+                    p.desejo_especializacao_area as desejo_especializacao_area,
+                    p.desejo_mestrado_area as desejo_mestrado_area,
+                    p.desejo_doutorado_area as desejo_doutorado_area,
         
                     p.idioma1 as idioma1,
                     p.idioma1_leitura as idioma1_leitura,

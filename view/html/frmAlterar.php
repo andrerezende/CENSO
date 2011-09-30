@@ -829,7 +829,8 @@ if($_SESSION['permiteAlterar'] == true) {
                                     "IFBAIANO - ITAPETINGA",
                                     "IFBAIANO - TEIXEIRA DE FREITAS",
                                     "IFBAIANO - URUÇUCA",
-                                    "IFBAIANO - VALENÇA"
+                                    "IFBAIANO - VALENÇA",
+                                    "IFBAIANO - GOVERNADOR MANGABEIRA"
                                     );
 
                                 $total = count($lotacao);
@@ -1272,6 +1273,79 @@ if($_SESSION['permiteAlterar'] == true) {
                         <input name="posgraduacao4_dataconclusao" id="posgraduacao4_dataconclusao" value="<?php echo $registro['posgraduacao4_dataconclusao']; ?>" type="text" size="15" maxlength="10" alt="Data de conclusão (Pós-graduação 4)" onkeypress="Mascara('DATA',this,event); return Onlynumber(event);" onfocus="academico_somenteLeitura('posgraduacao4_tipo');" />
                     </td>
                 </tr>
+                
+                
+                <!-- linha vazia --> 
+                <tr>
+                    <td height="27" align='left'></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2" height="27" align='left'>
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deseja cursar Pós-Graduação?</label>
+                    </td>
+                </tr>
+                       
+                
+                <!-- desejo cursar especializacao -->                
+                         
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <?php
+                        // verificando se o checkbox estará checked ou nao
+                        if($registro['desejo_especializacao_area']) { ?>
+                            <input type="checkbox" checked="checked" id="check_especializacao" name="check_especializacao" value="1" onchange="academico_somenteLeitura('check_especializacao');" />                  
+                        <?php } else { ?>
+                            <input type="checkbox" id="check_especializacao" name="check_especializacao" value="1" onchange="academico_somenteLeitura('check_especializacao');"/>
+                        <?php } ?>
+                    </td>
+                    <td>
+                        <label for="check_especializacao">Especialização</label>
+                        &nbsp;&nbsp;
+                        <label id="label_especializacao" style="display:none">Qual área?</label>
+                        <input name="desejo_especializacao_area" id="desejo_especializacao_area" value="<?php echo $registro['desejo_especializacao_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_especializacao');" style="display:none"/>
+                    </td>
+                </tr>                
+                
+                <!-- desejo cursar mestrado -->                
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <?php
+                        // verificando se o checkbox estará checked ou nao
+                        if($registro['desejo_mestrado_area']) { ?>
+                            <input type="checkbox" checked="checked" id="check_mestrado" name="check_mestrado" value="1" onchange="academico_somenteLeitura('check_mestrado');" />                  
+                        <?php } else { ?>
+                            <input type="checkbox" id="check_mestrado" name="check_mestrado" value="1" onchange="academico_somenteLeitura('check_mestrado');" />
+                        <?php } ?>
+                    </td>
+                    <td>
+                        <label for="check_mestrado">Mestrado</label>
+                        &nbsp;&nbsp;
+                        <label id="label_mestrado" style="display:none">Qual área?</label> 
+                        <input name="desejo_mestrado_area" id="desejo_mestrado_area" value="<?php echo $registro['desejo_mestrado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_mestrado');" style="display:none"/>
+                   </td>
+                </tr> 
+                
+                <!-- desejo cursar doutorado -->                
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <?php
+                        // verificando se o checkbox estará checked ou nao
+                        if($registro['desejo_doutorado_area']) { ?>
+                            <input type="checkbox" checked="checked" id="check_doutorado" name="check_doutorado" value="1" onchange="academico_somenteLeitura('check_doutorado');" />                  
+                        <?php } else { ?>
+                            <input type="checkbox" id="check_doutorado" name="check_doutorado" value="1" onchange="academico_somenteLeitura('check_doutorado');" />
+                        <?php } ?>
+                    </td>
+                    <td>
+                        <label for="check_doutorado">Doutorado</label>
+                        &nbsp;&nbsp;
+                        <label id="label_doutorado" style="display:none">Qual área?</label> 
+                        <input name="desejo_doutorado_area" id="desejo_doutorado_area" value="<?php echo $registro['desejo_doutorado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_doutorado');"  style="display:none"/>
+                   </td>
+                </tr> 
+                
+                
                 
                 <!-- linha vazia --> 
                 <tr>

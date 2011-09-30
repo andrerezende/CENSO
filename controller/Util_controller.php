@@ -400,6 +400,18 @@ class Util_controller {
                 return "Cidade";
                 break;
             
+            case "desejo_especializacao_area":
+                return "Desejo fazer Especialização em";
+                break;
+            
+            case "desejo_mestrado_area":
+                return "Desejo fazer Mestrado em";
+                break;
+            
+            case "desejo_doutorado_area":
+                return "Desejo fazer Doutorado em";
+                break;
+            
         }
     }
     
