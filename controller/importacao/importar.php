@@ -2,6 +2,7 @@
 session_start("autenticacao");
 
 //ini_set('display_errors', 1);
+ini_set('max_execution_time','600');    // tempo maximo de espera 10 minutos
 
 if($_SESSION['autenticado']) {
 
