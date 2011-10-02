@@ -890,10 +890,28 @@ if($_SESSION['permiteAlterar'] == true) {
                 
                 <tr>
                     <td width="150" height="27" align='right'>
+                        <label>Curso:</label>
+                    </td>
+                    <td>
+                        <input name="segundograu_curso" id="segundograu_curso" value="<?php echo $registro['segundograu_curso']; ?>" type="text" size="50" maxlength="60" alt="Curso (Pós-graduação 4)" onfocus="academico_somenteLeitura('segundograu');" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="150" height="27" align='right'>
                         <label>Instituição:</label>
                     </td>
                     <td>
                         <input name="segundograu_instituicao" id="segundograu_instituicao" value="<?php echo $registro['segundograu_instituicao']; ?>" type="text" size="50" maxlength="60" alt="Instituição (segundo grau)" onfocus="academico_somenteLeitura('segundograu');" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <label>Data de conclusão:</label>
+                    </td>
+                    <td>
+                        <input name="segundograu_dataconclusao" id="segundograu_dataconclusao" value="<?php echo $registro['segundograu_dataconclusao']; ?>" type="text" size="15" maxlength="10" alt="Data de conclusão (Segundo grau)" onkeypress="Mascara('DATA',this,event); return Onlynumber(event);" onfocus="academico_somenteLeitura('segundograu');" />
                     </td>
                 </tr>
 
@@ -926,10 +944,28 @@ if($_SESSION['permiteAlterar'] == true) {
                 
                 <tr>
                     <td width="150" height="27" align='right'>
+                        <label>Curso:</label>
+                    </td>
+                    <td>
+                        <input name="terceirograu_curso" id="terceirograu_curso" value="<?php echo $registro['terceirograu_curso']; ?>" type="text" size="50" maxlength="60" alt="Curso (Terceiro grau)" onfocus="academico_somenteLeitura('terceirograu');" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="150" height="27" align='right'>
                         <label>Instituição:</label>
                     </td>
                     <td>
                         <input name="terceirograu_instituicao" id="terceirograu_instituicao" value="<?php echo $registro['terceirograu_instituicao']; ?>" type="text" size="50" maxlength="60" alt="Instituição (terceiro grau)"  onfocus="academico_somenteLeitura('terceirograu');"/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <label>Data de conclusão:</label>
+                    </td>
+                    <td>
+                        <input name="terceirograu_dataconclusao" id="terceirograu_dataconclusao" value="<?php echo $registro['terceirograu_dataconclusao']; ?>" type="text" size="15" maxlength="10" alt="Data de conclusão (Terceiro grau)" onkeypress="Mascara('DATA',this,event); return Onlynumber(event);" onfocus="academico_somenteLeitura('terceirograu');" />
                     </td>
                 </tr>
                 
@@ -1302,8 +1338,15 @@ if($_SESSION['permiteAlterar'] == true) {
                     <td>
                         <label for="check_especializacao">Especialização</label>
                         &nbsp;&nbsp;
-                        <label id="label_especializacao" style="display:none">Qual área?</label>
-                        <input name="desejo_especializacao_area" id="desejo_especializacao_area" value="<?php echo $registro['desejo_especializacao_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_especializacao');" style="display:none"/>
+                        
+                        <?php if($registro['desejo_especializacao_area']) { ?>
+                            <label id="label_especializacao" style="display:inline">Qual área?</label>
+                            <input name="desejo_especializacao_area" id="desejo_especializacao_area" value="<?php echo $registro['desejo_especializacao_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_especializacao');" style="display:inline"/>                        
+                        
+                        <?php } else { ?>
+                            <label id="label_especializacao" style="display:none">Qual área?</label>
+                            <input name="desejo_especializacao_area" id="desejo_especializacao_area" value="<?php echo $registro['desejo_especializacao_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_especializacao');" style="display:none"/>
+                        <?php } ?>
                     </td>
                 </tr>                
                 
@@ -1321,8 +1364,14 @@ if($_SESSION['permiteAlterar'] == true) {
                     <td>
                         <label for="check_mestrado">Mestrado</label>
                         &nbsp;&nbsp;
-                        <label id="label_mestrado" style="display:none">Qual área?</label> 
-                        <input name="desejo_mestrado_area" id="desejo_mestrado_area" value="<?php echo $registro['desejo_mestrado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_mestrado');" style="display:none"/>
+                        
+                        <?php if($registro['desejo_mestrado_area']) { ?>
+                            <label id="label_mestrado" style="display:inline">Qual área?</label> 
+                            <input name="desejo_mestrado_area" id="desejo_mestrado_area" value="<?php echo $registro['desejo_mestrado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_mestrado');" style="display:inline"/>
+                        <?php } else { ?>
+                            <label id="label_mestrado" style="display:none">Qual área?</label> 
+                            <input name="desejo_mestrado_area" id="desejo_mestrado_area" value="<?php echo $registro['desejo_mestrado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_mestrado');" style="display:none"/>
+                        <?php } ?>
                    </td>
                 </tr> 
                 
@@ -1340,8 +1389,14 @@ if($_SESSION['permiteAlterar'] == true) {
                     <td>
                         <label for="check_doutorado">Doutorado</label>
                         &nbsp;&nbsp;
-                        <label id="label_doutorado" style="display:none">Qual área?</label> 
-                        <input name="desejo_doutorado_area" id="desejo_doutorado_area" value="<?php echo $registro['desejo_doutorado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_doutorado');"  style="display:none"/>
+                        
+                        <?php if($registro['desejo_doutorado_area']) { ?>
+                            <label id="label_doutorado" style="display:inline">Qual área?</label> 
+                            <input name="desejo_doutorado_area" id="desejo_doutorado_area" value="<?php echo $registro['desejo_doutorado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_doutorado');"  style="display:inline"/>
+                        <?php } else { ?>
+                            <label id="label_doutorado" style="display:none">Qual área?</label> 
+                            <input name="desejo_doutorado_area" id="desejo_doutorado_area" value="<?php echo $registro['desejo_doutorado_area']; ?>" type="text" size="50" maxlength="60" alt="Qual Curso?" onfocus="academico_somenteLeitura('check_doutorado');"  style="display:none"/>
+                        <?php } ?>
                    </td>
                 </tr> 
                 
@@ -1365,9 +1420,7 @@ if($_SESSION['permiteAlterar'] == true) {
             </tr>
         </table>  
                
-                
-                <!-- FAZER JAVASCRIPT COM IDIOMA AGORA. VOU DOMRIR -->
-        
+                       
     <table width="760" border="0" align='center' class="conteudo-tabela">
         
         <?php 

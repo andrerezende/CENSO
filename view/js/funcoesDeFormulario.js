@@ -303,9 +303,18 @@ function Onlynumber(e) {
                     if(elementoEscolhido.value == "") {
                         document.getElementById("segundograu_instituicao").value = "";
                         document.getElementById("segundograu_instituicao").readOnly = true;
+                        
+                        document.getElementById("segundograu_curso").value = "";
+                        document.getElementById("segundograu_curso").readOnly = true;
+                        
+                        document.getElementById("segundograu_dataconclusao").value = "";
+                        document.getElementById("segundograu_dataconclusao").readOnly = true;                        
+                        
                     } else {
                         document.getElementById("segundograu_instituicao").readOnly = false;
-                        document.getElementById("segundograu_instituicao").focus();
+                        document.getElementById("segundograu_curso").readOnly = false;
+                        document.getElementById("segundograu_dataconclusao").readOnly = false;
+                        
                     }
                     break;
                     
@@ -314,9 +323,18 @@ function Onlynumber(e) {
                     if(elementoEscolhido.value == "") {
                         document.getElementById("terceirograu_instituicao").value = "";
                         document.getElementById("terceirograu_instituicao").readOnly = true;
+                        
+                        document.getElementById("terceirograu_curso").value = "";
+                        document.getElementById("terceirograu_curso").readOnly = true;
+                        
+                        document.getElementById("terceirograu_dataconclusao").value = "";
+                        document.getElementById("terceirograu_dataconclusao").readOnly = true;
+                                                
                     } else {
                         document.getElementById("terceirograu_instituicao").readOnly = false;
-                        document.getElementById("terceirograu_instituicao").focus();
+                        document.getElementById("terceirograu_curso").readOnly = false;
+                        document.getElementById("terceirograu_dataconclusao").readOnly = false;
+                        
                     }
                     break;
                     

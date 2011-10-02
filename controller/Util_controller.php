@@ -412,6 +412,23 @@ class Util_controller {
                 return "Desejo fazer Doutorado em";
                 break;
             
+            case "segundograu_curso":
+                return "Curso (Segundo grau)";
+                break;
+            
+            case "segundograu_dataconclusao":
+                return "Data de Conclusão (Segundo grau)";
+                break;
+            
+            case "terceirograu_curso":
+                return "Curso (Terceiro grau)";
+                break;
+            
+            case "terceirograu_dataconclusao":
+                return "Data de Conclusão (Terceiro grau)";
+                break;
+            
+            
         }
     }
     

@@ -532,10 +532,20 @@
                     <label><b>Instituição:</b></label>
                     <label><?php echo $registroFromBanco['segundograu_instituicao']; ?></label>                            
                 </td>
+                
+                <td width="30%" height="27" align='left'>
+                    <label><b>Curso:</b></label>
+                    <label><?php echo $registroFromBanco['segundograu_curso']; ?></label>                            
+                </td>
 
+                <td width="20%" height="27" align='center'>
+                    <label><b>Data de conclusão:</b></label>
+                    <label><?php echo $registroFromBanco['segundograu_dataconclusao']; ?></label>                            
+                </td>
+            </tr>
 
             <!-- terceiro grau -->
-
+            <tr>
                 <td width="20%" height="27" align='center'>
                     <label><b>Terceiro grau:</b></label>
                     <label><?php echo $registroFromBanco['terceirograu']; ?></label>                            
@@ -544,6 +554,16 @@
                 <td width="30%" height="27" align='center'>
                     <label><b>Instituição:</b></label>
                     <label><?php echo $registroFromBanco['terceirograu_instituicao']; ?></label>                            
+                </td>
+                
+                <td width="30%" height="27" align='center'>
+                    <label><b>Curso:</b></label>
+                    <label><?php echo $registroFromBanco['terceirograu_curso']; ?></label>                            
+                </td>
+
+                <td width="20%" height="27" align='center'>
+                    <label><b>Data de conclusão:</b></label>
+                    <label><?php echo $registroFromBanco['terceirograu_dataconclusao']; ?></label>                            
                 </td>
             </tr>
 

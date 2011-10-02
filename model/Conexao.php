@@ -190,24 +190,9 @@ Class Conexao
         $query = pg_query($this->sock, $sql);
         $registro = pg_fetch_assoc($query);
         
-        // TRATANDO DATA        
-        if ($registro['datanascimento']) $registro['datanascimento'] = Util::dataFromBanco($registro['datanascimento']);
-        if ($registro['dataprimeiroemprego']) $registro['dataprimeiroemprego'] = Util::dataFromBanco($registro['dataprimeiroemprego']);
-        if ($registro['portaria_nomeacao_data']) $registro['portaria_nomeacao_data'] = Util::dataFromBanco($registro['portaria_nomeacao_data']);
-        if ($registro['data_publicacao']) $registro['data_publicacao'] = Util::dataFromBanco($registro['data_publicacao']);
-        if ($registro['data_posse']) $registro['data_posse'] = Util::dataFromBanco($registro['data_posse']);
-        if ($registro['data_exercicio']) $registro['data_exercicio'] = Util::dataFromBanco($registro['data_exercicio']);
-        if ($registro['rg_dataexpedicao']) $registro['rg_dataexpedicao'] = Util::dataFromBanco($registro['rg_dataexpedicao']);
-        if ($registro['registroprofissional_dataexpedicao']) $registro['registroprofissional_dataexpedicao'] = Util::dataFromBanco($registro['registroprofissional_dataexpedicao']);
-        if ($registro['registroprofissional_dataexpedicao']) $registro['tituloeleitor_dataexpedicao'] = Util::dataFromBanco($registro['tituloeleitor_dataexpedicao']);
-        if ($registro['posgraduacao1_dataconclusao']) $registro['posgraduacao1_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao1_dataconclusao']);
-        if ($registro['posgraduacao2_dataconclusao']) $registro['posgraduacao2_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao2_dataconclusao']);
-        if ($registro['posgraduacao3_dataconclusao']) $registro['posgraduacao3_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao3_dataconclusao']);
-        if ($registro['posgraduacao4_dataconclusao']) $registro['posgraduacao4_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao4_dataconclusao']);
-            
-        //print_r($registro);exit;
-    
-    
+        // TRATANDO DATA         
+        $registro = $this->trataDataSaida($registro);
+                
     // fechando o banco
     $this->close(); 
         
@@ -466,7 +451,21 @@ Class Conexao
         $query = pg_query($this->sock, $sql);
         $registro = pg_fetch_assoc($query);
         
-        // TRATANDO DATA        
+        // TRATANDO DATA     
+        $registro = $this->trataDataSaida($registro);
+    
+    // fechando o banco
+    $this->close(); 
+        
+    return $registro;
+        
+    }
+    
+    // TRATANDO DATA PARA SAÍDA   
+    private function trataDataSaida(Array $registro) {
+        if($registro == null)
+            throw new Exception ("O array de registros não pode ser nulo");
+        
         if ($registro['datanascimento']) $registro['datanascimento'] = Util::dataFromBanco($registro['datanascimento']);
         if ($registro['dataprimeiroemprego']) $registro['dataprimeiroemprego'] = Util::dataFromBanco($registro['dataprimeiroemprego']);
         if ($registro['portaria_nomeacao_data']) $registro['portaria_nomeacao_data'] = Util::dataFromBanco($registro['portaria_nomeacao_data']);
@@ -480,15 +479,10 @@ Class Conexao
         if ($registro['posgraduacao2_dataconclusao']) $registro['posgraduacao2_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao2_dataconclusao']);
         if ($registro['posgraduacao3_dataconclusao']) $registro['posgraduacao3_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao3_dataconclusao']);
         if ($registro['posgraduacao4_dataconclusao']) $registro['posgraduacao4_dataconclusao'] = Util::dataFromBanco($registro['posgraduacao4_dataconclusao']);
-            
-        //print_r($registro);exit;
-    
-    
-    // fechando o banco
-    $this->close(); 
+        if ($registro['segundograu_dataconclusao']) $registro['segundograu_dataconclusao'] = Util::dataFromBanco($registro['segundograu_dataconclusao']);
+        if ($registro['terceirograu_dataconclusao']) $registro['terceirograu_dataconclusao'] = Util::dataFromBanco($registro['terceirograu_dataconclusao']);
         
-    return $registro;
-        
+        return $registro;
     }
     
     function getIdCidadeByNome($nome_cidade) {

@@ -26,11 +26,16 @@ if($_SESSION['autenticado']) {
                 <img alt="Logo IFBaiano" src="../../view/html/statics/img/logo_ifbaiano.jpg" width="300" />
                 <p class="titulo-formulario">Relatório de Informações Pessoais - CENSO 2011</p>
                 <p></p> 
-                -->
+                
                 <h3>
                 MINISTÉRIO DA EDUCAÇÃO <br/>
                 SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA <br/>
-                INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA BAIANO</h3>
+                INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA BAIANO</h3>-->
+                
+                <h4 align="center">
+                    MINISTÉRIO DA EDUCAÇÃO - SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA - INSTITUTO FEDERAL BAIANO
+                </h4>
+                
                 <h3 align="center">CADASTRAMENTO FUNCIONAL</h3>
                 
                 <?php include_once "pessoa_individual.php"; ?>

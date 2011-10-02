@@ -24,17 +24,19 @@ if($_SESSION['autenticado']) {
             ob_start();     ?>
 
             <?php
-            foreach($allRegistros as $registroFromBanco) {  
-                
-                //$cidade = Solicitacoes::getNomeCidadeByID($registroFromBanco['id_cidade']); // tire essa linha, a cidade vem no array de registro
-            ?>
+            foreach($allRegistros as $registroFromBanco) {  ?>
 
-
+                <!--
                 <h3>
                 MINISTÉRIO DA EDUCAÇÃO <br/>
                 SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA <br/>
                 INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA BAIANO</h3>
                 <h3 align="center">CADASTRAMENTO FUNCIONAL</h3>
+                -->
+                
+                <h4 align="center">
+                    MINISTÉRIO DA EDUCAÇÃO - SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA - INSTITUTO FEDERAL BAIANO
+                </h4>
                 
                 <?php include_once "pessoa_individual.php"; ?>
              

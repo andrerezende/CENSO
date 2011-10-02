@@ -42,7 +42,9 @@ if($registroFromBanco && $registroFromPOST) {
             }  
             
             if($chave == "necessidade_especial_outra") {
-                $registroFromPOST["necessidade_especial"] = $registroFromPOST["necessidade_especial_outra"];
+                if($valor) {    // se necessidade_especial_outra tiver sido preenchido
+                    $registroFromPOST["necessidade_especial"] = $registroFromPOST["necessidade_especial_outra"];
+                }
             }
             
             // POPULA ARRAY DE CAMPOS ALTERADOS E POE ASPAS
@@ -76,12 +78,14 @@ if($registroFromBanco && $registroFromPOST) {
             
             <script>
                 alert("Obrigado por participar do nosso CENSO 2011, sua participação foi muito importante.");         
+                location.href = '../../controller/confirmacao_de_acesso/confirmar.php';   
             </script>
             
       <?php } else { ?>
             
             <script>
-                alert("Houve um erro ao alterar o registro.");        
+                alert("Houve um erro ao alterar o registro. Verifique se os dados foram digitados corretamente e tente novamente.");        
+                history.go(-1);
             </script>
             
             <?php
@@ -89,10 +93,11 @@ if($registroFromBanco && $registroFromPOST) {
     }
     ?>
             
-            
+      <!--      
     <script>
         location.href = '../../controller/confirmacao_de_acesso/confirmar.php';    
     </script>
+      -->
     
             
 <?php } else {    ?>
