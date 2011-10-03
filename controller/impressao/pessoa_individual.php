@@ -765,6 +765,17 @@
             </tr>
 
         </table>
+         
+         <table width="760" border="0" align='center' class="conteudo-tabela">
+
+            <tr>
+                <td width="100%" height="27" align='left'>
+                    <label><b>Grupo de pesquisa:</b></label>
+                    <label><?php echo $registroFromBanco['grupo_pesquisa']; ?></label>
+                </td>
+            </tr>
+
+        </table>
 
 
     <table width="760" border="0" align='center' class="titulo-tabela">				

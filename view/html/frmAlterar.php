@@ -1,6 +1,7 @@
 <?php 
 session_start();
 //var_dump($_SESSION);
+
 require_once '../../controller/Solicitacoes.php';
 
 if($_SESSION['permiteAlterar'] == true) {
@@ -32,7 +33,7 @@ if($_SESSION['permiteAlterar'] == true) {
             <p class="titulo-formulario">CENSO 2011</p>
             <p></p>  
             
-            <form id='formAlterar' name='formAlterar' action='../../controller/alteracao/alterar2.php' method='post' onsubmit="return validar();" >
+            <form id='formAlterar' name='formAlterar' action='../../controller/alteracao/alterar2.php' method='post' onsubmit="return validar_frmAlterar();" >
                 
                 <table width="760" border="0" align='center' class="titulo-tabela">				
                     <tr>                                
@@ -1400,6 +1401,15 @@ if($_SESSION['permiteAlterar'] == true) {
                    </td>
                 </tr> 
                 
+                <tr>
+                    <td width="150" height="27" align='right'>
+                        <label>Participa de algum grupo de pesquisa?</label>
+                    </td>
+                    <td>
+                        <textarea rows="4" cols="60" id="grupo_pesquisa" name="grupo_pesquisa"><?php echo $registro['grupo_pesquisa']; ?></textarea>                        
+                    </td>
+                </tr>
+                
                 
                 
                 <!-- linha vazia --> 
@@ -1424,7 +1434,12 @@ if($_SESSION['permiteAlterar'] == true) {
     <table width="760" border="0" align='center' class="conteudo-tabela">
         
         <?php 
-        $idioma = Array("", "INGLÊS", "ESPANHOL", "FRANCÊS", "ALEMÃO");
+        $idioma = Array("", "INGLÊS", "HINDI", "ESPANHOL", "ÁRABE", "FRANCÊS", "RUSSO", "PORTUGUÊS", "BENGALI", "INDONÉSIO"
+            , "ALEMÃO", "JAPONÊS", "PERSA", "ITALIANO", "PUNJABI", "URDU"
+            , "VIETNAMITA", "TAMIL", "JAVANÊS", "TELUGU", "TURCO", "COREANO", "MARATHI", "ÁRABE EGÍPCIO", "GUJARATI"
+            , "POLACO", "KANNADA", "BIRMANÊS", "UCRANIANO", "MALAIALA", "ORIYA", "TAILANDÊS", "SUNDANÊS", "CURDO"
+            , "ROMENO", "SOMALI", "HAUSA", "TAGALOG", "AZERI", "PASHTO", "MALAIO", "ASSAMÊS", "UZBEQUE", "SINDHI", "IORUBÁ"
+            , "LAO", "CEBUANO", "OROMO", "IGBO", "MALGAXE", "NEPALÊS");
         $total_idioma = count($idioma);
         
         $idioma_nivel = Array("", "BÁSICO", "INTERMEDIÁRIO", "AVANÇADO");

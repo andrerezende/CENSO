@@ -428,6 +428,10 @@ class Util_controller {
                 return "Data de Conclusão (Terceiro grau)";
                 break;
             
+            case "grupo_pesquisa":
+                return "Grupo de Pesquisa";
+                break;
+            
             
         }
     }

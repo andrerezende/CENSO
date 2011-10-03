@@ -1,4 +1,6 @@
 <?php
+//ini_set('display_errors', 1);
+
 // CLASSE DE ENCAMINHAMENTO DOS DADOS PARA ALTERACAO
 session_start();
 $_SESSION['permiteAlterar'] = false;

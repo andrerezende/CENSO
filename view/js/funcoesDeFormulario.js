@@ -183,27 +183,22 @@ function Onlynumber(e) {
         }
         
         
-        function validar() {
+        function validar_frmAlterar() {
 		
 		var declaracao			= document.getElementById("declaracao");
-                var cpf                         = document.getElementById("cpf");
-                var nome                        = document.getElementById("nome");
+                var grupo_pesquisa              = document.getElementById("grupo_pesquisa");
 
 		resultado = true;
                 
-                if (nome.value == "") {
-			alert('Voce precisa preencher o nome!');
-			nome.focus();
-			resultado = false;  
-		} 
-                if (cpf.value == "") {
-			alert('Voce precisa preencher o cpf!');
-			cpf.focus();
-			resultado = false;  
-		} 
 		if (!declaracao.checked) {
 			alert('Voce precisa aceitar a declaracao!');
 			declaracao.focus();
+			resultado = false;  
+		}
+                // limite máximo 300 caracteres
+                if (grupo_pesquisa.value.length > 300) {
+                    alert("O campo 'Grupo de Pesquisa' excedeu o limite de caracters permitido: 300");
+			grupo_pesquisa.focus();
 			resultado = false;  
 		}
                 
@@ -505,7 +500,7 @@ function Onlynumber(e) {
             }
             
         }
-        
+                
         function idioma_somenteLeitura(n) {
             
             var elementoEscolhido = document.getElementById("idioma"+n);
