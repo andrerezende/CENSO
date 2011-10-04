@@ -1434,14 +1434,14 @@ if($_SESSION['permiteAlterar'] == true) {
     <table width="760" border="0" align='center' class="conteudo-tabela">
         
         <?php 
-        $idioma = Array("", "INGLÊS", "HINDI", "ESPANHOL", "ÁRABE", "FRANCÊS", "RUSSO", "PORTUGUÊS", "BENGALI", "INDONÉSIO"
-            , "ALEMÃO", "JAPONÊS", "PERSA", "ITALIANO", "PUNJABI", "URDU"
-            , "VIETNAMITA", "TAMIL", "JAVANÊS", "TELUGU", "TURCO", "COREANO", "MARATHI", "ÁRABE EGÍPCIO", "GUJARATI"
-            , "POLACO", "KANNADA", "BIRMANÊS", "UCRANIANO", "MALAIALA", "ORIYA", "TAILANDÊS", "SUNDANÊS", "CURDO"
-            , "ROMENO", "SOMALI", "HAUSA", "TAGALOG", "AZERI", "PASHTO", "MALAIO", "ASSAMÊS", "UZBEQUE", "SINDHI", "IORUBÁ"
-            , "LAO", "CEBUANO", "OROMO", "IGBO", "MALGAXE", "NEPALÊS");
+        $idioma = Array("", "INGLÊS", "ESPANHOL", "ALEMÃO", "ASSAMÊS", "AZERI", "ÁRABE", "ÁRABE EGÍPCIO"
+            , "BENGALI", "BIRMANÊS", "CEBUANO", "COREANO", "CURDO", "FRANCÊS", "GUJARATI", "HAUSA"
+            , "HINDI", "IGBO", "INDONÉSIO", "IORUBÁ", "ITALIANO", "JAPONÊS", "JAVANÊS", "KANNADA"
+            , "LAO", "MALAIALA", "MALAIO", "MALGAXE", "MARATHI", "NEPALÊS", "ORIYA", "OROMO", "PASHTO"
+            , "PERSA", "POLACO", "PORTUGUÊS", "PUNJABI", "ROMENO", "RUSSO", "SINDHI", "SOMALI", "SUNDANÊS", "TAGALOG"
+            , "TAILANDÊS", "TAMIL", "TELUGU", "TURCO", "UCRANIANO", "URDU", "UZBEQUE", "VIETNAMITA");
         $total_idioma = count($idioma);
-        
+                
         $idioma_nivel = Array("", "BÁSICO", "INTERMEDIÁRIO", "AVANÇADO");
         $total_nivel = count($idioma_nivel);
         ?>
