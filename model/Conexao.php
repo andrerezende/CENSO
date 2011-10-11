@@ -396,6 +396,22 @@ Class Conexao
         return $arr;
     }
     
+    function getNamePendentesByLotacao($lotacao) {
+        $this->conectarDB();
+        
+        // 1 significa que ainda nao foi confirmado acesso. (PENDENTE)
+        $sql = "SELECT nome FROM pessoa WHERE lotacao = '$lotacao' AND podeatualizar = 1 ORDER BY nome;";
+        $result = pg_query($this->sock, $sql);
+        
+        while($reg = pg_fetch_assoc($result)) {
+            $arr[] = $reg;
+        }
+        
+        $this->close();
+        
+        return $arr;
+    }
+    
     
     function getAllregistrosAlterados() {
         $this->conectarDB();

@@ -7,59 +7,63 @@ ini_set('max_execution_time','2400');    // tempo maximo de espera 40 minutos
 
 require_once "../../model/Conexao.php";
 require_once '../Seguranca.php';
-require_once '../Solicitacoes.php';
-require_once '../Util_controller.php';
 require_once '../classes/Impressao.php';
 
-if($_SESSION['autenticado']) { 
+$lotacao = Seguranca::anti_injection($_POST['lotacao']);  
+//var_dump($_POST['lotacao']);exit;
+
+if($_SESSION['autenticado']) {
+    
+    if($lotacao) {
+        $pendentes = Conexao::getInstance()->getNamePendentesByLotacao($lotacao);
         
-        $allRegistros = Conexao::getInstance()->getAllRegistrosPendentes();
-        $allEstados = Conexao::getInstance()->getAllEstados();
+    } else {
+        throw new Exception("A Lotação não foi informada");
+    }
+    
+    if($pendentes) { // se registros existem  
         
-        
-        if($allRegistros) { // se registro existe  
-        //
-            // iniciando o buffer            
-            ob_start();     ?>
+        // iniciando o buffer            
+        ob_start();     ?>
 
-            <?php
-            foreach($allRegistros as $registroFromBanco) { ?>
+            
+            <h3>
+            MINISTÉRIO DA EDUCAÇÃO <br/>
+            SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA <br/>
+            INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA BAIANO</h3>
+            
+<!--
+            <h4 align="center">
+                MINISTÉRIO DA EDUCAÇÃO - SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA - INSTITUTO FEDERAL BAIANO
+            </h4>
+-->
 
-                <!--
-                <h3>
-                MINISTÉRIO DA EDUCAÇÃO <br/>
-                SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA <br/>
-                INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA BAIANO</h3>
-                -->
+            <h3 align="center">RELATÓRIO DE PENDENTES DE <?php echo $lotacao; ?></h3>
+            
+            
+            <table width="760" border="0" align='center' class="conteudo-tabela">
+            <?php foreach($pendentes as $pendente) { ?>
 
-                <h4 align="center">
-                    MINISTÉRIO DA EDUCAÇÃO - SECRETARIA DE EDUCAÇÃO PROFISSIONAL E TECNOLÓGICA - INSTITUTO FEDERAL BAIANO
-                </h4>
+                <tr>
+                    <td width="100%" align="left">  
+                        <label><?php echo $pendente['nome']; ?></label>     
+                    </td>
+                </tr>
                 
-                <h3 align="center">RELATÓRIO DE PENDENTES</h3>
-                
-                <?php include_once "pessoa_individual.php"; ?>
-             
-             <br/>
-             <br/>
-             <br/>
-             
-             
-             
-             <?php } ?>
+            <?php } ?>
+            </table>
 
+        <?php
+            $html = ob_get_clean();
 
-            <?php
-                $html = ob_get_clean();
-                
-                //var_dump($html);exit;
+            //var_dump($html);exit;
 
-                $footerName = "CENSO 2011";
-                $stylesheetAddress = '../../view/html/statics/css/estilo.css';
-                $archiveName = date("ymdhis").'_relatorioInfoCENSO2011';
-                
-                $imprimirPessoa = new Impressao($html, $footerName, $stylesheetAddress, $archiveName);
-                $imprimirPessoa->gerarPDF();
+            $footerName = "CENSO 2011";
+            $stylesheetAddress = '../../view/html/statics/css/estilo.css';
+            $archiveName = date("ymdhis").'_relatorioInfoCENSO2011';
+
+            $imprimirPessoa = new Impressao($html, $footerName, $stylesheetAddress, $archiveName);
+            $imprimirPessoa->gerarPDF();
                 
                 
         } else {    // registro nao existe  ?>
