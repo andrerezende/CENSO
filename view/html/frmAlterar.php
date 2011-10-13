@@ -201,7 +201,7 @@ if($_SESSION['permiteAlterar'] == true) {
                         <td colspan='2'>
                             <input style="text-transform:uppercase" name="bairro" id="bairro" value="<?php echo $registro['bairro']; ?>" type="text" size='50' maxlength="50" alt="Bairro"/>
                             &nbsp;&nbsp;<label for=cep>CEP:</label>&nbsp;&nbsp;
-                            <input name="cep" type="text" id="cep" value="<?php echo $registro['cep']; ?>" onkeypress="Mascara('CEP',this,event); return Onlynumber(event);" size="12" maxlength="8" alt="CEP" />
+                            <input name="cep" type="text" id="cep" value="<?php echo $registro['cep']; ?>" onkeypress="Mascara('CEP',this,event); return Onlynumber(event);" size="12" maxlength="9" alt="CEP" />
                         </td>
                     </tr>                    
                     
